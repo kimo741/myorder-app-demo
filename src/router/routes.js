@@ -1,5 +1,18 @@
-
+import wlecomePage from "src/layouts/WelcomApp.vue"
+import wilcomeSlider from "src/pages/welcome-pages/WilcomeSlider.vue"
 const routes = [
+  {
+    path:'/welcome',
+    component:wlecomePage,
+    name:"welcome",
+    children:[
+      {
+        path:'slider',
+        component:wilcomeSlider,
+        name:"wilcomeSlider",
+      }
+    ]
+  },
   {
     path: '/',
     component: () => import('layouts/MainLayout.vue'),
