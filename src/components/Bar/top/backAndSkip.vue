@@ -1,27 +1,42 @@
 <template>
   <!-- <div class="fixed-top-bar bg-red"> -->
-  <q-header elevated class="bg-primary text-white">
+  <div dir="rtl" class="bg-transparent">
     <q-toolbar>
       <q-toolbar-title>
-        <q-btn :label="lable" :icon="icon" @click="$emit('emitClick')" flat />
+        <q-btn
+          v-if="title"
+          class="text-500 text-body1 text-center disc-color"
+          :label="title"
+          @click="$emit('emitClick')"
+          flat
+        />
+        <q-btn
+          v-else
+          class="text-center"
+          color="black"
+          :icon="iconSrc"
+          @click="$emit('emitClick')"
+          size="lg"
+          flat
+        />
       </q-toolbar-title>
       <!-- </div> -->
     </q-toolbar>
-  </q-header>
+  </div>
 </template>
 
 <script>
 export default {
   props: {
-    lable: {
+    title: {
       type: String,
       required: false,
-      default: "",
+      default: false,
     },
-    icon: {
+    iconSrc: {
       type: String,
       required: false,
-      default: "",
+      default: false,
     },
   },
   setup() {

@@ -111,3 +111,27 @@ small,
 .index-100 {
   z-index: 100;
 }
+
+.disc-color {
+  color: $font-body;
+}
+
+.text-bold {
+  font-weight: bold;
+}
+
+.text-normal {
+  font-weight: normal;
+}
+
+.text-500 {
+  font-weight: 500;
+}
+
+.text-body1 {
+  line-height: 1.7rem;
+}
+
+.main-rounded {
+  border-radius: 20px !important;
+}

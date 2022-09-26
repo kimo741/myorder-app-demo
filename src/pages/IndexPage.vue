@@ -1,6 +1,6 @@
 <template>
   <q-page class="flex flex-center">
-    <BackAndSkip lable="تخطي" />
+    <!-- <BackAndSkip lable="تخطي" /> -->
     <!-- <img
       alt="Quasar logo"
       src="~assets/quasar-logo-vertical.svg"
@@ -11,10 +11,10 @@
 
 <script>
 import { defineComponent } from "vue";
-import BackAndSkip from "src/components/Bar/top/backAndSkip.vue";
+// import BackAndSkip from "src/components/Bar/top/backAndSkip.vue";
 
 export default defineComponent({
   name: "IndexPage",
-  components: { BackAndSkip },
+  // components: { BackAndSkip },
 });
 </script>
