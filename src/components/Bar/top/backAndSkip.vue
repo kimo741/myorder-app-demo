@@ -16,7 +16,7 @@
           color="black"
           :icon="iconSrc"
           @click="$emit('emitClick')"
-          size="lg"
+          size="md"
           flat
         />
       </q-toolbar-title>

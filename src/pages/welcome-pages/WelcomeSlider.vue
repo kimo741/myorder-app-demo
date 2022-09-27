@@ -11,55 +11,76 @@
         navigation
         padding
         style="height: calc(100vh - 50px); border-radius: none !important"
-        class="full-width rounded-borders"
+        class="welcom-sliede full-width rounded-borders"
       >
-        <q-carousel-slide name="style" class="column no-wrap flex-center">
+        <q-carousel-slide name="browse" class="column no-wrap flex-center">
           <!-- <q-icon name="live_tv" size="56px" /> -->
           <div class="row welcom">
-            <div class="col-12 welcom__img">
-              <img src="img/Group.png" />
-            </div>
-            <div class="col-12 welcom__content q-mt-md text-center">
-              <div class="text-h5 text-500">سهولة تصفح المتاجر</div>
+            <div class="col-12 welcom__content text-center">
+              <div class="text-h5 text-primary q-py-sm text-500">
+                سهولة تصفح المتاجر
+              </div>
               <div class="text-body2 disc-color">
                 هناك حقيقة مثبتة منذ زمن طويل وهي أن المحتوى المقروء لصفحة ما
                 سيلهي القارئ للنص أو شكل توضع
               </div>
             </div>
+            <div class="col-12 welcom__img">
+              <img src="img/Group.png" />
+            </div>
+            <q-btn
+              @click="firstSlide"
+              class="q-my-md welcom__btn"
+              label="التالى"
+            />
           </div>
         </q-carousel-slide>
-        <q-carousel-slide name="tv" class="column no-wrap flex-center">
+        <q-carousel-slide name="review" class="column no-wrap flex-center">
           <!-- <q-icon name="live_tv" size="56px" /> -->
           <div class="row welcom">
             <div class="col-12 welcom__img">
               <img src="img/Customer Survey.png" />
             </div>
-            <div class="col-12 welcom__content q-mt-md text-center">
-              <div class="text-h5 text-500">يمكن الطلب والتوصيل بكل سهولة</div>
+            <div class="col-12 welcom__content text-center">
+              <div class="text-h5 text-primary q-py-sm text-500">
+                يمكن الطلب والتوصيل بكل سهولة
+              </div>
               <div class="text-body2 disc-color">
                 هناك حقيقة مثبتة منذ زمن طويل وهي أن المحتوى المقروء لصفحة ما
                 سيلهي القارئ للنص أو شكل توضع
               </div>
             </div>
+
+            <q-btn
+              @click="socSlide"
+              class="q-my-md welcom__btn"
+              label="التالى"
+            />
           </div>
         </q-carousel-slide>
-        <q-carousel-slide name="layers" class="column no-wrap flex-center">
+        <q-carousel-slide name="orders" class="column no-wrap flex-center">
           <!-- <q-icon name="live_tv" size="56px" /> -->
           <div class="row welcom">
-            <div class="col-12 welcom__img">
-              <img src="img/Delivery-amico 1 (1).png" />
-            </div>
-            <div class="col-12 welcom__content q-mt-md text-center">
-              <div class="text-h5 text-500">سهولة تصفح المتاجر</div>
+            <div class="col-12 welcom__content text-center">
+              <div class="text-h5 text-primary q-py-sm text-500">
+                سهولة تصفح المتاجر
+              </div>
               <div class="text-body2 disc-color">
                 هناك حقيقة مثبتة منذ زمن طويل وهي أن المحتوى المقروء لصفحة ما
                 سيلهي القارئ للنص أو شكل توضع
               </div>
-              <q-btn class="q-my-md welcom__btn" label="ابدأ" />
               <div class="text-center text-body2 cursor-pointer">
                 الدخول كذائر
               </div>
             </div>
+            <div class="col-12 welcom__img">
+              <img src="img/Delivery-amico 1 (1).png" />
+            </div>
+            <q-btn
+              @click="lastSlide"
+              class="q-my-md welcom__btn"
+              label="ابدأ"
+            />
           </div>
         </q-carousel-slide>
       </q-carousel>
@@ -75,16 +96,26 @@ export default {
   setup() {
     return {
       navPos: ref("bottom"),
-      slide: ref("style"),
+      slide: ref("browse"),
       lorem:
         "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Itaque voluptatem totam, architecto cupiditate officia rerum, error dignissimos praesentium libero ab nemo.",
     };
+  },
+  methods: {
+    firstSlide() {
+      this.slide = "review";
+    },
+    socSlide() {
+      this.slide = "orders";
+    },
+    lastSlide() {},
   },
   components: { BackAndSkip },
 };
 </script>
 <style lang="scss" scoped>
 .welcom {
+  text-align: right;
   // position: relative;
   // height: 100%;
   height: 100%;
@@ -100,22 +131,26 @@ export default {
     }
   }
   &__content {
-    position: fixed;
-    bottom: 0;
-    left: 0;
-    height: 300px;
-    background-color: $bg-slide;
-    text-align: center;
-    border-radius: 30px 30px 0 0;
-    padding: 0 20px 0 20px;
-    overflow: auto;
+    text-align: right;
+    // position: fixed;
+    // bottom: 0;
+    // left: 0;
+    // height: 300px;
+    // background-color: $bg-slide;
+    // text-align: center;
+    // border-radius: 30px 30px 0 0;
+    // padding: 0 20px 0 20px;
+    // overflow: auto;
   }
   &__btn {
-    height: 45px;
-    width: 70%;
-    border-radius: 10px;
+    position: fixed;
+    right: 30px;
+    bottom: 5px;
+    height: 65px;
+    width: 65px;
+    border-radius: 50%;
     font-weight: bolder;
-    background-color: $secondary;
+    background-color: $primary;
     color: white;
   }
 }

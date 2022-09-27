@@ -1,38 +1,102 @@
 <template>
-  <q-page class="full-height q-px-md" dir="rtl">
+  <q-page class="login-page full-height q-px-md" dir="rtl">
     <BackAndSkip class="q-py-md" iconSrc="arrow_forward_ios" />
-    <div class="text-h4">ادخل رقم الهاتف</div>
+    <div class="text-h5">هلا بعودتك من جديد</div>
     <div class="text-body2">ادخل رقم هاتفك لانشاء حساب جديد او تسجيل دخول</div>
-    <div class="q-my-lg">
-      <div class="column">
-        <q-input
-          class="main-rounded"
-          flat
-          v-model="number"
-          type="tel"
-          hint="mobile number"
-          bg-color="grey-4"
-          rounded
-          filled
-        >
-          <template v-slot:append>
-            <q-select
-              flat
-              style="border-right: 1px solid #999"
-              bg-color="transparent"
-              v-model="musk"
-              :options="options"
-            >
-              <template v-slot:append>
-                <q-avatar square>
-                  <img :src="musk.avatar" />
-                </q-avatar>
-              </template>
-            </q-select>
-          </template>
-        </q-input>
+    <q-form @submit.prevent="onSubmit">
+      <div class="q-my-lg row justify-center">
+        <div class="col-10 text-center q-mx-auto">
+          <q-input
+            class="main-rounded q-mx-auto"
+            flat
+            v-model="number"
+            type="number"
+            bg-color="grey-3"
+            rounded
+            required
+            filled
+          >
+            <template v-slot:append>
+              <q-btn-dropdown
+                dir="ltr"
+                dense
+                flat
+                push
+                no-caps
+                class="border-right"
+              >
+                <template v-slot:label>
+                  <div class="row items-center no-wrap">
+                    <img :src="musks.avatar" />
+                    <div class="text-center q-mx-sm">{{ musks.label }}</div>
+                  </div>
+                </template>
+                <!-- <q-img :src="musks.avatar" /> -->
+
+                <q-list>
+                  <q-item
+                    v-for="(musk, i) in options"
+                    :key="i"
+                    clickable
+                    v-close-popup
+                    @click="onItemClick(musk)"
+                  >
+                    <q-item-section>
+                      <q-item-label>{{ musk.label }}</q-item-label>
+                    </q-item-section>
+                    <q-item-section avatar>
+                      <!-- <q-avatar :url="musk.avatar" text-color="white" /> -->
+                      <img :src="musk.avatar" />
+                    </q-item-section>
+                  </q-item>
+                </q-list>
+              </q-btn-dropdown>
+            </template>
+          </q-input>
+        </div>
+        <div class="col-10 q-my-md">
+          <q-input
+            class="main-rounded"
+            bg-color="grey-3"
+            rounded
+            filled
+            required
+            flat
+            v-model="password"
+            :type="isPwd ? 'password' : 'text'"
+          >
+            <template v-slot:append>
+              <q-icon
+                :name="isPwd ? 'visibility_off' : 'visibility'"
+                class="cursor-pointer"
+                @click="isPwd = !isPwd"
+                standout
+              />
+            </template>
+          </q-input>
+          <div class="q-mt-sm text-right text-body2" style="color: #999">
+            نسيت كلمة المرور ؟
+          </div>
+        </div>
+        <div class="col-10 q-my-sm btn-container">
+          <q-btn
+            color="primary"
+            class="main-rounded full-width q-py-sm q-my-sm"
+            label="تسجيل دخول"
+          />
+          <q-btn
+            color="primary"
+            outline
+            class="main-rounded full-width q-pt-sm q-my-sm"
+            label="تسجيل جديد"
+          />
+
+          <div class="q-my-sm text-center text-body2" style="color: #999">
+            الدخول كزائر
+          </div>
+        </div>
       </div>
-    </div>
+    </q-form>
   </q-page>
 </template>
 
@@ -43,8 +107,10 @@ export default {
   components: { BackAndSkip },
   setup() {
     return {
+      password: ref(""),
+      isPwd: ref(true),
       number: ref(""),
-      musk: ref({
+      musks: ref({
         label: "+966 ",
         value: "+966",
         avatar: "icon/flag.png",
@@ -67,6 +133,11 @@ export default {
         },
       ]),
     };
+  },
+  methods: {
+    onItemClick(mask) {
+      this.musks = mask;
+    },
   },
 };
 </script>
