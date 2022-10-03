@@ -1,6 +1,9 @@
 import wlecomePage from "src/layouts/WelcomApp.vue"
 import wilcomeSlider from "src/pages/welcome-pages/WelcomeSlider.vue"
 import login from "src/pages/welcome-pages/Login/LoginPage.vue"
+import verification from "src/pages/welcome-pages/Login/verificationPage.vue"
+import ForgetPassword from "src/pages/welcome-pages/Login/ForgitePassword.vue"
+import creatNewPassword from "src/pages/welcome-pages/Login/CreateNewPassword.vue"
 const routes = [
   {
     path:'/welcome',
@@ -16,8 +19,24 @@ const routes = [
         path:'login',
         component:login,
         name:"login",
+        props:true
       },
-
+      {
+        path:'verification/:phone',
+        component:verification,
+        name:"verification",
+        props:true
+      },
+      {
+        path:'ForgetPassword',
+        component:ForgetPassword,
+        name:"ForgetPassword",
+      },
+      {
+        path:'creatNewPassword',
+        component:creatNewPassword,
+        name:"creatNewPassword",
+      },
     ]
   },
   {
@@ -25,7 +44,7 @@ const routes = [
     component: () => import('layouts/MainLayout.vue'),
     children: [
       { path: '',
-       component: () => import('pages/IndexPage.vue') }
+      component: () => import('pages/IndexPage.vue') }
     ]
   },
 

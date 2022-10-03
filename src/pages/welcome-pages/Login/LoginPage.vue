@@ -1,9 +1,13 @@
 <template>
   <q-page class="login-page full-height q-px-md" dir="rtl">
-    <BackAndSkip class="q-py-md" iconSrc="arrow_forward_ios" />
+    <BackAndSkip
+      @emitClick="previewPage"
+      class="q-py-md"
+      iconSrc="arrow_forward_ios"
+    />
     <div class="text-h5">هلا بعودتك من جديد</div>
     <div class="text-body2">ادخل رقم هاتفك لانشاء حساب جديد او تسجيل دخول</div>
-    <q-form @submit.prevent="onSubmit">
+    <q-form @submit.prevent="logIn">
       <div class="q-my-lg row justify-center">
         <div class="col-10 text-center q-mx-auto">
           <q-input
@@ -74,24 +78,36 @@
               />
             </template>
           </q-input>
-          <div class="q-mt-sm text-right text-body2" style="color: #999">
+          <div
+            @click="forgitPassword"
+            class="q-mt-sm text-right text-body2"
+            style="color: #999"
+          >
             نسيت كلمة المرور ؟
           </div>
         </div>
         <div class="col-10 q-my-sm btn-container">
           <q-btn
+            type="submit"
             color="primary"
             class="main-rounded full-width q-py-sm q-my-sm"
             label="تسجيل دخول"
+            unelevated
           />
           <q-btn
+            @click="newRegester"
             color="primary"
             outline
             class="main-rounded full-width q-pt-sm q-my-sm"
             label="تسجيل جديد"
+            unelevated
           />
 
-          <div class="q-my-sm text-center text-body2" style="color: #999">
+          <div
+            @click="openAsGust"
+            class="q-my-sm text-center text-body2"
+            style="color: #999"
+          >
             الدخول كزائر
           </div>
         </div>
@@ -135,6 +151,18 @@ export default {
     };
   },
   methods: {
+    previewPage() {},
+    logIn() {
+      // this.$router.push({
+      //   name: "verification",
+      //   params: {
+      //     phone: this.number,
+      //   },
+      // });
+    },
+    newRegester() {},
+    forgitPassword() {},
+    openAsGust() {},
     onItemClick(mask) {
       this.musks = mask;
     },
