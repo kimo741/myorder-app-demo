@@ -1,9 +1,11 @@
-import wlecomePage from "src/layouts/WelcomApp.vue"
-import wilcomeSlider from "src/pages/welcome-pages/WelcomeSlider.vue"
-import login from "src/pages/welcome-pages/Login/LoginPage.vue"
-import verification from "src/pages/welcome-pages/Login/verificationPage.vue"
-import ForgetPassword from "src/pages/welcome-pages/Login/ForgitePassword.vue"
-import creatNewPassword from "src/pages/welcome-pages/Login/CreateNewPassword.vue"
+//////////////////////////////////////////
+///////// wildom and login pages//////////
+//////////////////////////////////////////
+import { wlecomePage , wilcomeSlider , login , verification ,ForgetPassword, creatNewPassword , RejesterAccount  } from "./container-pages/welcomAndLogin"
+//////////////////////////////////////////
+//////////////////////////////////////////
+//////////////////////////////////////////
+
 const routes = [
   {
     path:'/welcome',
@@ -36,6 +38,11 @@ const routes = [
         path:'creatNewPassword',
         component:creatNewPassword,
         name:"creatNewPassword",
+      },
+      {
+        path:'RejesterAccount',
+        component:RejesterAccount,
+        name:"RejesterAccount",
       },
     ]
   },
