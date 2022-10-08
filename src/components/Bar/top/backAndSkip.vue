@@ -7,7 +7,7 @@
           v-if="title"
           class="text-500 text-body1 text-center disc-color"
           :label="title"
-          @click="$emit('emitClick')"
+          @click="$emit('emitSkip')"
           flat
         />
         <q-btn
@@ -15,7 +15,7 @@
           class="text-center"
           color="black"
           :icon="iconSrc"
-          @click="$emit('emitClick')"
+          @click="$router.go(-1)"
           size="md"
           flat
         />

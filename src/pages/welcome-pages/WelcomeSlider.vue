@@ -1,6 +1,6 @@
 <template>
   <q-page>
-    <BackAndSkip title="تخطي" />
+    <BackAndSkip @emitSkip="lastSlide" title="تخطي" />
     <div class="">
       <q-carousel
         v-model="slide"
@@ -108,7 +108,9 @@ export default {
     socSlide() {
       this.slide = "orders";
     },
-    lastSlide() {},
+    lastSlide() {
+      this.$router.push({ name: "login" });
+    },
   },
   components: { BackAndSkip },
 };

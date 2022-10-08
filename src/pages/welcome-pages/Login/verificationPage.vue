@@ -74,11 +74,13 @@
           color="primary"
           class="main-rounded full-width q-py-sm q-my-sm"
           label="تحقق"
+          @click="doneVifr"
+          :loading="load"
         />
       </div>
     </q-form>
     <div v-if="!time_out" class="col-11 q-my-sm">
-      <span class="text-body2">لم تتلق رمز ؟</span>
+      <span @click="backToCheckNumber" class="text-body2">لم تتلق رمز ؟</span>
       <span class="q-px-md text-caption text-grey-5"
         >اعادوة الأرسال {{ min }}:{{ suc }}</span
       >
@@ -97,6 +99,7 @@ export default {
   setup() {
     return {
       phone_num: ref(""),
+      load: ref(false),
       ids: ref({
         id1: "",
         id2: "",
@@ -144,8 +147,15 @@ export default {
       // this.fucas_num = "4";
       this.$refs.input4.$el.focus();
     },
+    backToCheckNumber() {
+      this.$router.push({ name: "ForgetPassword" });
+    },
     doneVifr() {
-      // supmit
+      this.load = true;
+      this.$router.push({ name: "creatNewPassword" });
+      setTimeout(() => {
+        this.this.load = false;
+      }, 2000);
     },
   },
 };

@@ -21,7 +21,7 @@ const routes = [
         path:'login',
         component:login,
         name:"login",
-        props:true
+
       },
       {
         path:'verification/:phone',
@@ -33,6 +33,7 @@ const routes = [
         path:'ForgetPassword',
         component:ForgetPassword,
         name:"ForgetPassword",
+        props:true
       },
       {
         path:'creatNewPassword',

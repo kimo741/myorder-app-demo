@@ -101,7 +101,12 @@ export default {
     };
   },
   methods: {
-    sendVifrCode() {},
+    sendVifrCode() {
+      this.$router.push({
+        name: "verification",
+        params: { phone: `${this.number}` },
+      });
+    },
   },
 };
 </script>

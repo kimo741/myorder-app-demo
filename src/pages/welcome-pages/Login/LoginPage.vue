@@ -160,8 +160,12 @@ export default {
       //   },
       // });
     },
-    newRegester() {},
-    forgitPassword() {},
+    newRegester() {
+      this.$router.push({ name: "RejesterAccount" });
+    },
+    forgitPassword() {
+      this.$router.push({ name: "ForgetPassword" });
+    },
     openAsGust() {},
     onItemClick(mask) {
       this.musks = mask;
