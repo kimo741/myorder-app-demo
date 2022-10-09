@@ -40,8 +40,6 @@ export default {
   data() {
     return {
       src: "avatar/no-profile-img.png",
-      imageHint:
-        "Set the product hover image. Only *.png, *.jpg, *.jpeg, *.webp and *.svg image files are accepted",
     };
   },
   watch: {

@@ -1,18 +1,39 @@
 <template>
   <div class="container" dir="rtl">
     <div class="storys">
-      <div class="storys__items storys__mine">
+      <div @click="uploadStory" class="q-my-md storys__items storys__mine">
+        <!-- //////////////////////////////////////////////// -->
+        <!-- input to upload image but not display input fild -->
+        <!-- //////////////////////////////////////////////// -->
+        <input
+          style="display: none"
+          class="input"
+          ref="inputStory"
+          @change="uploadStoryChanged"
+          type="file"
+        />
+        <!-- //////////////////////////////////////////// -->
+        <!-- if not have story now show my profile image  -->
+        <!-- //////////////////////////////////////////// -->
         <img :src="storys[0].img" />
       </div>
+      <!-- //////////////////////////////////////////// -->
+      <!-- //////////for loop in other story/////////// -->
+      <!-- //////////////////////////////////////////// -->
+
       <div
         v-for="(story, i) in storys"
         :key="i"
-        class="storys__items"
+        class="storys__items q-my-md"
         @click="openThisImg(story)"
       >
-        <img :src="story.img" />
+        <img :src="story.prof_img" />
+        <div class="text-center text-body1">{{ story.name }}</div>
       </div>
     </div>
+    <!-- ////////////////////// -->
+    <!-- dialog for other story -->
+    <!-- ////////////////////// -->
     <q-dialog
       persistent
       class="popUp-story bg-white"
@@ -22,10 +43,6 @@
       flat
       v-model="show_story"
     >
-      <!-- <q-card
-        class="bg-transparent q-px-0 full-width"
-        style="text-align: center; padding: 0 !important"
-      > -->
       <q-card
         class="bg-transparent"
         style="
@@ -34,14 +51,104 @@
           height: 100% !important ;
         "
       >
-        <q-btn class="closePopup" icon="close" flat @click="closePopup" />
+        <!-- ///////////////// -->
+        <!-- btn to clos popup -->
+        <!-- ///////////////// -->
+        <q-btn
+          class="closePopup"
+          size="lg"
+          icon="close"
+          flat
+          @click="closePopup"
+        />
+        <!-- //////////////////// -->
+        <!-- img for target story -->
+        <!-- //////////////////// -->
+        <!-- note 👉👉👉: i was cheked for story id and find it in my array to review it
+            and move next and prview from my current index -->
+        <!-- //////////////////// -->
         <q-img
           class="dialog__img"
           style="z-index: 100"
           :src="storys[img_ndex].img"
         />
+        <!-- //////////////////////////////// -->
+        <!-- input for commint in other story -->
+        <!-- //////////////////////////////// -->
+        <q-input class="storys__comment" rounded outlined v-model="comment">
+          <template v-slot:append>
+            <q-avatar>
+              <q-btn icon="send" @click="commintOnStory" />
+            </q-avatar>
+          </template>
+        </q-input>
+        <q-btn
+          flat
+          color="primary"
+          class="storys__btn-next"
+          icon="eva-arrowhead-right-outline"
+          @click="slideToNextStory"
+        />
+        <q-btn
+          flat
+          color="primary"
+          class="storys__btn-prview"
+          icon="eva-arrowhead-left-outline"
+          @click="slideTopreviewStory"
+        />
       </q-card>
       <!-- </q-card> -->
+    </q-dialog>
+    <!-- ////////////////////////// -->
+    <!-- dialog for upload my story -->
+    <!-- ////////////////////////// -->
+    <q-dialog
+      persistent
+      class="popUp-story bg-white"
+      style="padding: 0 !important"
+      full-height
+      full-width
+      flat
+      v-model="dialog_upload"
+    >
+      <q-card
+        class="bg-transparent"
+        style="
+          padding: 0 !important;
+          width: 100% !important;
+          height: 100% !important ;
+        "
+      >
+        <!-- ///////////////// -->
+        <!-- btn to clos popup -->
+        <!-- ///////////////// -->
+        <q-btn
+          class="closePopup"
+          size="lg"
+          icon="close"
+          flat
+          @click="closePopup"
+        />
+        <!-- ////////////////////////////////////// -->
+        <!-- image for review img src before upload -->
+        <!-- ////////////////////////////////////// -->
+        <q-img
+          class="dialog__img"
+          style="z-index: 100"
+          :src="story_upload_src"
+        />
+        <!-- //////////////////////// -->
+        <!-- btn to submit this story -->
+        <!-- //////////////////////// -->
+        <q-btn
+          class="storys__comment"
+          icon="send"
+          label="اضافة"
+          color="primary"
+          size="md"
+          @click="commintOnStory"
+        />
+      </q-card>
     </q-dialog>
   </div>
 </template>
@@ -51,28 +158,49 @@ import { ref } from "vue";
 export default {
   setup() {
     return {
+      // dialog for my story
+      dialog_upload: ref(false),
+      // image file to upload
+      story_upload: ref(""),
+      // img url to review
+      story_upload_src: ref(""),
+      // commin in other story
+      comment: ref(""),
+      // index for img story i was clickd it
       img_ndex: ref(""),
+      // dialog for other story
       show_story: ref(false),
+      // scema for testing
       storys: ref([
         {
           id: 1,
+          name: "name",
           img: "test/1.png",
+          prof_img: "test/1.png",
         },
         {
           id: 2,
+          name: "name",
           img: "test/2.png",
+          prof_img: "test/2.png",
         },
         {
           id: 3,
+          name: "name",
           img: "test/3.png",
+          prof_img: "test/3.png",
         },
         {
           id: 4,
+          name: "name",
           img: "test/4.png",
+          prof_img: "test/4.png",
         },
         {
           id: 5,
+          name: "name",
           img: "test/5.png",
+          prof_img: "test/5.png",
         },
       ]),
     };
@@ -85,6 +213,59 @@ export default {
     },
     closePopup() {
       this.show_story = false;
+      this.dialog_upload = false;
+    },
+    commintOnStory() {
+      // tack commint and send it as message with story img
+    },
+    // on upload story
+    uploadStory() {
+      const input = this.$refs.inputStory;
+      input.click();
+    },
+    uploadStoryChanged() {
+      // handel image before upload
+      const allwoedType = [
+        "image/jpeg",
+        "image/png",
+        "image/svg+xml",
+        "image/webp",
+      ];
+      const file = event.target.files[0];
+      if (allwoedType.indexOf(file.type) !== -1) {
+        var imgData = new FileReader();
+        imgData.readAsDataURL(file);
+        imgData.onload = (e) => {
+          // for review
+          this.story_upload_src = e.target.result;
+          // for uploading
+          this.story_upload = file;
+          // open dialog
+          this.dialog_upload = true;
+        };
+      } else {
+        this.$q.notify({
+          message:
+            "Sorry! You can't upload image With " + file.type + " Extension",
+          color: "red",
+        });
+      }
+    },
+    slideToNextStory() {
+      // handel if this story is last story in my array
+      if (this.img_ndex == this.storys.length) {
+        return;
+      } else {
+        this.img_ndex++;
+      }
+    },
+    slideTopreviewStory() {
+      // handel if this story is first story in my array
+      if (!this.img_ndex) {
+        return;
+      } else {
+        this.img_ndex--;
+      }
     },
   },
 };
@@ -153,6 +334,38 @@ export default {
       background-color: white;
     }
   }
+  &__comment {
+    position: fixed;
+    bottom: 5px;
+    transform: translate(-50%, -50%);
+    left: 50%;
+    width: 90%;
+    z-index: 200;
+    margin: auto;
+  }
+  &__upload-done {
+    position: fixed;
+    bottom: 10px;
+    right: 13px;
+    width: 20%;
+    z-index: 200;
+    margin: auto;
+  }
+  &__btn-next {
+    position: fixed;
+    top: 50%;
+    right: 10px;
+    z-index: 200;
+    opacity: 0.8;
+  }
+  &__btn-prview {
+    position: fixed;
+    top: 50%;
+    left: 10px;
+    // transform: translate(-50%, -50%);
+    z-index: 400;
+    opacity: 0.8;
+  }
 }
 .closePopup {
   position: fixed;
@@ -168,31 +381,4 @@ export default {
   max-width: 100%;
   height: auto;
 }
-// .mobile {
-//   display: none;
-//   @media (max-width: 768px) {
-//     display: flex;
-//   }
-//   overflow-x: scroll;
-//   padding: 24px;
-//   width: 100%;
-//   scroll-snap-type: mandatory;
-//   scroll-padding: 24px;
-//   border-radius: 8px;
-//   gap: 6px;
-//   &::-webkit-scrollbar {
-//     width: 5px;
-//     height: 5px;
-//   }
-//   &::-webkit-scrollbar-thumb {
-//     border-radius: 14px;
-//     border: 5px solid $q-primary;
-//   }
-//   &__item {
-//     flex: 0 0 100%;
-//     padding: 10px;
-//     scroll-snap-align: start;
-//     font-size: 0.8rem;
-//   }
-// }
 </style>
