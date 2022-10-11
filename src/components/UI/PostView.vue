@@ -5,18 +5,47 @@
         <div dir="rtl" class="row justify-center">
           <div class="col flex justify-start">
             <div class="post__top-prifile">
-              <img src="test/4.png" alt="" />
+              <q-img src="test/4.png" alt="" />
             </div>
             <div class="text-body2">
               <div>اسم المطعم</div>
-              <div>اليوم منذ 5ساعات</div>
+              <div>اليوم منذ 5 ساعات</div>
             </div>
           </div>
         </div>
       </div>
       <q-card class="my-card">
         <img src="https://cdn.quasar.dev/img/mountains.jpg" />
-        <q-card-actions align="right"> </q-card-actions>
+        <q-card-actions align="right">
+          <div>
+            <!-- /////////////////// -->
+            <!-- views for this post -->
+            <!-- /////////////////// -->
+            <div class="text-body2">مشاهده 1,985</div>
+            <!-- //////////////// -->
+            <!-- rating component -->
+            <!-- //////////////// -->
+            <q-rating
+              dir="rtl"
+              v-model="model"
+              max="5"
+              size="1em"
+              color="#DFB300"
+              icon="star_border"
+              icon-selected="star"
+              icon-half="star_half"
+              no-dimming
+            />
+            <!-- //////////////////////////////////// -->
+            <!-- container for like & commint & share -->
+            <!-- //////////////////////////////////// -->
+            <div class="row" dir="rtl">
+              <q-btn size="md" flat class="col" icon="eva-heart-outline" />
+              <q-btn size="md" flat class="col" icon="comment" />
+              <q-btn size="md" flat class="col" icon="share" />
+            </div>
+          </div>
+        </q-card-actions>
       </q-card>
       <div @click="moreOptions" dir="ltr" class="post__more">
         <!-- ico more option see it in scss  -->

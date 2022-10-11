@@ -1,14 +1,23 @@
 <template>
   <q-page>
+    <!-- //////////////// -->
+    <!-- header component -->
+    <!-- //////////////// -->
     <div>
       <MainNav />
     </div>
+    <!-- /////////////// -->
+    <!-- story component -->
+    <!-- /////////////// -->
     <div class="q-my-md">
       <TopBarStotys />
     </div>
     <div class="q-px-md q-mt-md">
       <div class="q-gutter-y-md">
         <q-card>
+          <!-- //// -->
+          <!-- taps -->
+          <!-- //// -->
           <q-tabs
             v-model="tab"
             dense
@@ -25,10 +34,15 @@
           <q-separator />
 
           <q-tab-panels v-model="tab" animated>
+            <!-- //////////// -->
+            <!-- location tap -->
+            <!-- //////////// -->
             <q-tab-panel name="location">
               <PostView />
             </q-tab-panel>
-
+            <!-- ///////////// -->
+            <!-- discovery tap -->
+            <!-- ///////////// -->
             <q-tab-panel name="discovery"> </q-tab-panel>
           </q-tab-panels>
         </q-card>
