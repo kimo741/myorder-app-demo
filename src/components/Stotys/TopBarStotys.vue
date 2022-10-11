@@ -12,9 +12,6 @@
           @change="uploadStoryChanged"
           type="file"
         />
-        <!-- //////////////////////////////////////////// -->
-        <!-- if not have story now show my profile image  -->
-        <!-- //////////////////////////////////////////// -->
         <img :src="storys[0].img" />
       </div>
       <!-- //////////////////////////////////////////// -->
@@ -28,7 +25,11 @@
         @click="openThisImg(story)"
       >
         <img :src="story.prof_img" />
-        <div class="text-center text-body1">{{ story.name }}</div>
+        <!-- i am stoped here 👇👇/////////////////////////  -->
+        <div class="storys__name text-center text-bold text-body1">
+          {{ story.name }}
+        </div>
+        <!--///////////////////👆👆///////////////////////// -->
       </div>
     </div>
     <!-- ////////////////////// -->
@@ -273,7 +274,7 @@ export default {
 
 <style lang="scss" scoped>
 .storys {
-  padding: 1rem;
+  padding: 0 1rem 1.3rem;
   display: flex;
   overflow-x: scroll;
   scroll-padding: 100%;
@@ -365,6 +366,10 @@ export default {
     // transform: translate(-50%, -50%);
     z-index: 400;
     opacity: 0.8;
+  }
+  &__name {
+    overflow: hidden;
+    text-overflow: ellipsis;
   }
 }
 .closePopup {

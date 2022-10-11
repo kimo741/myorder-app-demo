@@ -1,5 +1,5 @@
 <template>
-  <q-page class="">
+  <q-page>
     <div>
       <MainNav />
     </div>
@@ -25,7 +25,9 @@
           <q-separator />
 
           <q-tab-panels v-model="tab" animated>
-            <q-tab-panel name="location"> </q-tab-panel>
+            <q-tab-panel name="location">
+              <PostView />
+            </q-tab-panel>
 
             <q-tab-panel name="discovery"> </q-tab-panel>
           </q-tab-panels>
@@ -39,11 +41,12 @@
 import { ref } from "vue";
 import MainNav from "../components/Bar/top/MainNav.vue";
 import TopBarStotys from "src/components/Stotys/TopBarStotys.vue";
+import PostView from "src/components/UI/PostView.vue";
 // import BackAndSkip from "src/components/Bar/top/backAndSkip.vue";
 
 export default {
   name: "IndexPage",
-  components: { MainNav, TopBarStotys },
+  components: { MainNav, TopBarStotys, PostView },
   setup() {
     return {
       tab: ref("location"),

@@ -1,9 +1,16 @@
 <template>
   <q-page class="full-height q-px-md" dir="rtl">
+    <!-- //////////////////////// -->
+    <!-- top bar for back or skip -->
+    <!-- //////////////////////// -->
     <BackAndSkip class="q-py-md" iconSrc="arrow_forward_ios" />
+    <!-- //////////////////////// -->
     <div class="text-h4 text-bold">التحقق من رقم الهاتف</div>
     <div class="text-body2">اعد ادخال كلمة كرور جديده</div>
     <q-form class="q-my-lg row" @reset="onReset" @submit.prevent="sendVifrCode">
+      <!-- ////////////////////// -->
+      <!-- input for new password -->
+      <!-- ////////////////////// -->
       <q-input
         class="col-11 q-mx-auto q-my-md main-rounded"
         bg-color="grey-3"
@@ -15,6 +22,9 @@
         v-model="password"
         :type="isPwd ? 'password' : 'text'"
       >
+        <!-- //////////////////////////////////// -->
+        <!-- toggle btn to show password or hidin -->
+        <!-- //////////////////////////////////// -->
         <template v-slot:append>
           <q-icon
             :name="isPwd ? 'visibility_off' : 'visibility'"
@@ -24,6 +34,10 @@
           />
         </template>
       </q-input>
+      <!-- ///////////////////// -->
+      <!-- retype a new password -->
+      <!-- ///////////////////// -->
+
       <q-input
         class="col-11 q-mx-auto q-my-sm main-rounded"
         bg-color="grey-3"
@@ -35,6 +49,9 @@
         v-model="re_password"
         :type="isPwd ? 'password' : 'text'"
       >
+        <!-- //////////////////////////////////// -->
+        <!-- toggle btn to show password or hidin -->
+        <!-- //////////////////////////////////// -->
         <template v-slot:append>
           <q-icon
             :name="isPwd ? 'visibility_off' : 'visibility'"
@@ -44,6 +61,9 @@
           />
         </template>
       </q-input>
+      <!-- ///////////// -->
+      <!-- resset inputs -->
+      <!-- ///////////// -->
       <q-btn
         type="reset"
         color="grey-5"
@@ -53,6 +73,9 @@
         unelevated
         flat
       />
+      <!-- //////////// -->
+      <!-- supmit buton -->
+      <!-- //////////// -->
       <q-btn
         type="submit"
         color="primary"
@@ -76,6 +99,7 @@ export default {
     };
   },
   methods: {
+    // supmit function
     sendVifrCode() {
       if (this.password == this.re_password) {
         this.$q.notify({

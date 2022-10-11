@@ -1,15 +1,18 @@
 <template>
   <q-page class="login-page full-height q-px-md" dir="rtl">
-    <BackAndSkip
-      @emitClick="previewPage"
-      class="q-py-md"
-      iconSrc="arrow_forward_ios"
-    />
+    <!-- //////////////////////// -->
+    <!-- top bar for back or skip -->
+    <!-- //////////////////////// -->
+    <BackAndSkip class="q-py-md" iconSrc="arrow_forward_ios" />
+    <!-- //////////////////////// -->
     <div class="text-h5">هلا بعودتك من جديد</div>
     <div class="text-body2">ادخل رقم هاتفك لانشاء حساب جديد او تسجيل دخول</div>
     <q-form @submit.prevent="logIn">
       <div class="q-my-lg row justify-center">
         <div class="col-10 text-center q-mx-auto">
+          <!-- ////////////////////// -->
+          <!-- input for phone numper -->
+          <!-- ////////////////////// -->
           <q-input
             class="main-rounded q-mx-auto"
             flat
@@ -20,6 +23,10 @@
             required
             filled
           >
+            <!-- ////////////////////////// -->
+            <!-- dropdown musk phone numper -->
+            <!-- ////////////////////////// -->
+
             <template v-slot:append>
               <q-btn-dropdown
                 dir="ltr"
@@ -35,8 +42,9 @@
                     <div class="text-center q-mx-sm">{{ musks.label }}</div>
                   </div>
                 </template>
-                <!-- <q-img :src="musks.avatar" /> -->
-
+                <!-- /////////////// -->
+                <!-- list for musks  -->
+                <!-- /////////////// -->
                 <q-list>
                   <q-item
                     v-for="(musk, i) in options"
@@ -58,6 +66,9 @@
             </template>
           </q-input>
         </div>
+        <!-- ////////////// -->
+        <!-- input password -->
+        <!-- ////////////// -->
         <div class="col-10 q-my-md">
           <q-input
             class="main-rounded"
@@ -69,6 +80,10 @@
             v-model="password"
             :type="isPwd ? 'password' : 'text'"
           >
+            <!-- //////////////////////////////// -->
+            <!-- toggle for hide password or show -->
+            <!-- //////////////////////////////// -->
+
             <template v-slot:append>
               <q-icon
                 :name="isPwd ? 'visibility_off' : 'visibility'"
@@ -78,6 +93,9 @@
               />
             </template>
           </q-input>
+          <!-- ////////////////////// -->
+          <!-- forgit password button -->
+          <!-- ////////////////////// -->
           <div
             @click="forgitPassword"
             class="q-mt-sm text-right text-body2"
@@ -87,6 +105,9 @@
           </div>
         </div>
         <div class="col-10 q-my-sm btn-container">
+          <!--////////////// -->
+          <!-- supmit button -->
+          <!-- ///////////// -->
           <q-btn
             type="submit"
             color="primary"
@@ -94,6 +115,9 @@
             label="تسجيل دخول"
             unelevated
           />
+          <!--////////////////////// -->
+          <!-- rejester a new accout -->
+          <!-- ///////////////////// -->
           <q-btn
             @click="newRegester"
             color="primary"
@@ -102,7 +126,9 @@
             label="تسجيل جديد"
             unelevated
           />
-
+          <!--/////////////////// -->
+          <!-- open app as a gust -->
+          <!-- ////////////////// -->
           <div
             @click="openAsGust"
             class="q-my-sm text-center text-body2"
@@ -151,7 +177,7 @@ export default {
     };
   },
   methods: {
-    previewPage() {},
+    // supmit sunction
     logIn() {
       // this.$router.push({
       //   name: "verification",
@@ -160,16 +186,22 @@ export default {
       //   },
       // });
     },
+    ////////////////////////////////////////////
     newRegester() {
       this.$router.push({ name: "RejesterAccount" });
     },
+    ////////////////////////////////////////////
     forgitPassword() {
       this.$router.push({ name: "ForgetPassword" });
     },
+    ////////////////////////////////////////////
     openAsGust() {},
+    ////////////////////////////////////////////
+    // on sellect musk
     onItemClick(mask) {
       this.musks = mask;
     },
+    ////////////////////////////////////////////
   },
 };
 </script>

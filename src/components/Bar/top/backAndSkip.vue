@@ -1,8 +1,10 @@
 <template>
-  <!-- <div class="fixed-top-bar bg-red"> -->
   <div dir="rtl" class="bg-transparent">
     <q-toolbar>
       <q-toolbar-title>
+        <!-- ///////////////////////////////////////////////// -->
+        <!-- btn have a title and emmit function if have title -->
+        <!-- ///////////////////////////////////////////////// -->
         <q-btn
           v-if="title"
           class="text-500 text-body1 text-center disc-color"
@@ -10,6 +12,9 @@
           @click="$emit('emitSkip')"
           flat
         />
+        <!-- /////////////////////////////////////////////////////// -->
+        <!-- btn have a icon have a function to forward page history -->
+        <!-- /////////////////////////////////////////////////////// -->
         <q-btn
           v-else
           class="text-center"

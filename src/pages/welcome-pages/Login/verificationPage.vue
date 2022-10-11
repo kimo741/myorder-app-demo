@@ -1,6 +1,10 @@
 <template>
   <q-page class="full-height q-px-md" dir="rtl">
+    <!-- //////////////////////// -->
+    <!-- top nav for back or skip -->
+    <!-- //////////////////////// -->
     <BackAndSkip class="q-py-md" iconSrc="arrow_forward_ios" />
+    <!-- //////////////////////// -->
     <div class="text-h4 text-bold">التحقق من رقم الهاتف</div>
     <div class="text-body2">
       ستصلك رسالة نصية برمز التحقق علي رقم {{ phone_num }}
@@ -100,6 +104,7 @@ export default {
     return {
       phone_num: ref(""),
       load: ref(false),
+      // 4 model to vaidation key
       ids: ref({
         id1: "",
         id2: "",
@@ -112,6 +117,7 @@ export default {
     };
   },
   watch: {
+    //time out adter 2 min => time_out = true
     suc(val) {
       if (val !== 0) {
         setTimeout(() => {
@@ -126,31 +132,35 @@ export default {
     },
   },
   computed: {
+    // merge 4 key in sigle value
     mergeInputs() {
       return this.ids.id1 + this.ids.id2 + this.ids.id3 + this.ids.id4;
     },
   },
   mounted() {
+    // start calc on mounte this page
     this.suc--;
+    // get phone numper from params incloud route
     this.phone_num = this.$route.params.phone;
   },
   methods: {
+    // on type focus in next input
     changeToTow() {
       this.$refs.input2.$el.focus();
-      // this.fucas_num = "2";
     },
+    // on type focus in next input
     changeToThre() {
-      // this.fucas_num = "3";
       this.$refs.input3.$el.focus();
     },
+    // on type focus in next input
     changeToFour() {
-      // this.fucas_num = "4";
       this.$refs.input4.$el.focus();
     },
     backToCheckNumber() {
       this.$router.push({ name: "ForgetPassword" });
     },
     doneVifr() {
+      // on type in last input supmit & on click
       this.load = true;
       this.$router.push({ name: "creatNewPassword" });
       setTimeout(() => {

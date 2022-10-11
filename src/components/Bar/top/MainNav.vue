@@ -1,46 +1,48 @@
 <template>
   <div class="container" dir="rtl">
-    <div class="row justify-around q-py-md">
-      <div class="col-2 row">
-        <!-- ///////////////// -->
-        <!-- notficaton button -->
-        <!-- ///////////////// -->
-        <q-btn
-          v-show="notfiIcon"
-          class="col-6"
-          icon="img:icon\notfication.png"
-          flat
-          @click="openNotficatonPage"
-        >
-          <!-- badge if have notficaton was,t see it -->
+    <div class="row justify-around q-pt-md">
+      <div class="col-3">
+        <div class="row justify-center">
+          <!-- ///////////////// -->
+          <!-- notficaton button -->
+          <!-- ///////////////// -->
+          <q-btn
+            v-show="notfiIcon"
+            class="col-5"
+            icon="img:icon\notfication.png"
+            flat
+            @click="openNotficatonPage"
+          >
+            <!-- badge if have notficaton was,t see it -->
 
-          <q-badge
-            class="edit-badge edit-badge__notify"
-            v-show="nofiBdge"
-            align="top"
-            color="primary"
-            rounded
-            floating
-          />
-          <!-- ///////////////// -->
-          <!----- chat button ----->
-          <!-- ///////////////// -->
-        </q-btn>
-        <q-btn
-          v-show="messageIcon"
-          class="col-6"
-          icon="img:icon\message.png"
-          flat
-        >
-          <q-badge
-            class="edit-badge"
-            v-show="messageBdge"
-            color="primary"
-            rounded
-            floating
-            @click="openInboxMessages"
-          />
-        </q-btn>
+            <q-badge
+              class="edit-badge edit-badge__notify"
+              v-show="nofiBdge"
+              align="top"
+              color="primary"
+              rounded
+              floating
+            />
+            <!-- ///////////////// -->
+            <!----- chat button ----->
+            <!-- ///////////////// -->
+          </q-btn>
+          <q-btn
+            v-show="messageIcon"
+            class="col-5"
+            icon="img:icon\message.png"
+            flat
+          >
+            <q-badge
+              class="edit-badge"
+              v-show="messageBdge"
+              color="primary"
+              rounded
+              floating
+              @click="openInboxMessages"
+            />
+          </q-btn>
+        </div>
       </div>
       <!-- ///////////////// -->
       <!------ cover img ------>
@@ -51,13 +53,13 @@
       <!-- ///////////////// -->
       <!------ ///////// ------>
       <!-- ///////////////// -->
-      <div class="col-2 row">
+      <div class="col-3 row justify-center">
         <!-- ///////////////// -->
         <!---- location img ----->
         <!-- ///////////////// -->
         <q-btn
           v-show="locationIcon"
-          class="col-6"
+          class="col-5"
           icon="img:icon\location.png"
           flat
           @click="openLocationPage"
@@ -67,7 +69,7 @@
         <!-- ///////////////// -->
         <q-btn
           v-show="searchIcon"
-          class="col-6"
+          class="col-5"
           icon="img:icon\Search.png"
           flat
           @click="openSearchPage"

@@ -123,27 +123,30 @@
       <!---------- date  ----------->
       <!-- ////////////////////// -->
       <div class="q-gutter-xs row q-my-md">
-        <div class="text-body2 col-2 user-type">تاريخ الميلاد :</div>
+        <div class="text-body2 col user-type">تاريخ الميلاد :</div>
         <q-select
-          class="col-3"
+          class="col"
           dense
+          required
           filled
           v-model="day_val"
           :options="day_opstions"
         />
         <q-select
-          class="col-3"
+          class="col"
           filled
           v-model="month_val"
           :options="month_opstions"
           dense
+          required
         />
         <q-select
-          class="col-3"
+          class="col"
           filled
           v-model="year_val"
           :options="year_opthions"
           dense
+          required
         />
       </div>
       <!-- ////////////////////// -->

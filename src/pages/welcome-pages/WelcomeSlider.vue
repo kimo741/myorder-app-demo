@@ -1,6 +1,12 @@
 <template>
   <q-page>
+    <!-- //////////////////////// -->
+    <!-- top bar for back or skip -->
+    <!-- //////////////////////// -->
     <BackAndSkip @emitSkip="lastSlide" title="تخطي" />
+    <!-- //////// -->
+    <!-- carousel -->
+    <!-- //////// -->
     <div class="">
       <q-carousel
         v-model="slide"
@@ -13,6 +19,9 @@
         style="height: calc(100vh - 50px); border-radius: none !important"
         class="welcom-sliede full-width rounded-borders"
       >
+        <!-- /////////// -->
+        <!-- first slide -->
+        <!-- /////////// -->
         <q-carousel-slide name="browse" class="column no-wrap flex-center">
           <!-- <q-icon name="live_tv" size="56px" /> -->
           <div class="row welcom">
@@ -35,6 +44,9 @@
             />
           </div>
         </q-carousel-slide>
+        <!-- /////////// -->
+        <!-- soc slide -->
+        <!-- /////////// -->
         <q-carousel-slide name="review" class="column no-wrap flex-center">
           <!-- <q-icon name="live_tv" size="56px" /> -->
           <div class="row welcom">
@@ -58,6 +70,9 @@
             />
           </div>
         </q-carousel-slide>
+        <!-- ////////// -->
+        <!-- last slide -->
+        <!-- ////////// -->
         <q-carousel-slide name="orders" class="column no-wrap flex-center">
           <!-- <q-icon name="live_tv" size="56px" /> -->
           <div class="row welcom">
@@ -102,12 +117,15 @@ export default {
     };
   },
   methods: {
+    // go to next slide
     firstSlide() {
       this.slide = "review";
     },
+    // go to next slide
     socSlide() {
       this.slide = "orders";
     },
+    // finish
     lastSlide() {
       this.$router.push({ name: "login" });
     },

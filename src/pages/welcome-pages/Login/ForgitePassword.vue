@@ -1,5 +1,8 @@
 <template>
   <q-page class="full-height q-px-md" dir="rtl">
+    <!-- //////////////////////// -->
+    <!-- top bar for back or skip -->
+    <!-- //////////////////////// -->
     <BackAndSkip
       @emitClick="previewPage"
       class="q-py-md"
@@ -8,6 +11,9 @@
     <div class="text-h5">نسيت كلمة المرور</div>
     <div class="text-body2">أدخل رقم الجوال لارسال كود التحقق دخول</div>
     <q-form class="q-my-lg row" @submit.prevent="sendVifrCode">
+      <!-- /////////////////////////// -->
+      <!-- input for type phone numper -->
+      <!-- /////////////////////////// -->
       <q-input
         class="col-11 main-rounded q-mx-auto"
         flat
@@ -27,14 +33,18 @@
             no-caps
             class="border-right"
           >
+            <!-- ///////////////////////// -->
+            <!-- sellect phone numper musk -->
+            <!-- ///////////////////////// -->
             <template v-slot:label>
               <div class="row items-center no-wrap">
                 <img :src="musks.avatar" />
                 <div class="text-center q-mx-sm">{{ musks.label }}</div>
               </div>
             </template>
-            <!-- <q-img :src="musks.avatar" /> -->
-
+            <!-- /////////////// -->
+            <!-- list for musks  -->
+            <!-- /////////////// -->
             <q-list>
               <q-item
                 v-for="(musk, i) in options"
@@ -47,7 +57,6 @@
                   <q-item-label>{{ musk.label }}</q-item-label>
                 </q-item-section>
                 <q-item-section avatar>
-                  <!-- <q-avatar :url="musk.avatar" text-color="white" /> -->
                   <img :src="musk.avatar" />
                 </q-item-section>
               </q-item>
@@ -55,6 +64,9 @@
           </q-btn-dropdown>
         </template>
       </q-input>
+      <!-- ///////////// -->
+      <!-- supmit button -->
+      <!-- ///////////// -->
       <div class="col-11 q-mx-auto q-my-lg">
         <q-btn
           type="submit"

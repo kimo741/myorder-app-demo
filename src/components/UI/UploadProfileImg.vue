@@ -1,7 +1,13 @@
 <template>
   <div class="upload-image">
+    <!-- ///////////////////////////////// -->
+    <!-- input not display to apload image -->
+    <!-- ///////////////////////////////// -->
     <input class="input" ref="input" @change="changeImag" type="file" />
     <div class="text-subtitle1"></div>
+    <!-- ////////////////////////////////////////////////////// -->
+    <!-- image rouded will show placeholde in not upload image  -->
+    <!-- ////////////////////////////////////////////////////// -->
     <div class="img-container card-round q-mx-auto">
       <q-avatar
         style="color: white; zoom: 90%; z-index: 5"
@@ -53,6 +59,7 @@ export default {
   },
   methods: {
     changeImag(event) {
+      // rols for img extentios
       const allwoedType = [
         "image/jpeg",
         "image/png",
@@ -64,10 +71,13 @@ export default {
         var imgData = new FileReader();
         imgData.readAsDataURL(file);
         imgData.onload = (e) => {
+          // url for review
           this.src = e.target.result;
+          // file to send it in requist
           this.$emit("uploadFile", file);
         };
       } else {
+        // if img type not incloud allwoedType show this notification
         this.$q.notify({
           message:
             "Sorry! You can't upload image With " + file.type + " Extension",
@@ -76,6 +86,7 @@ export default {
       }
     },
     clickFileInput() {
+      // on click image click on input to upload image
       const input = this.$refs.input;
       input.click();
     },
