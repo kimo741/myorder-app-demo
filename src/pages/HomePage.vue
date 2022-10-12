@@ -14,14 +14,14 @@
     </div>
     <div class="q-px-md q-mt-md">
       <div class="q-gutter-y-md">
-        <q-card>
+        <q-card class="q-pa-0 no-effict bg-transparent">
           <!-- //// -->
           <!-- taps -->
           <!-- //// -->
           <q-tabs
             v-model="tab"
             dense
-            class="primary bg-taps"
+            class="bg-transparent no-effict primary bg-taps"
             align="justify"
             indicator-color="transparent"
             narrow-indicator
@@ -31,13 +31,15 @@
             <q-tab icon="insights" name="discovery" />
           </q-tabs>
 
-          <q-separator />
-
-          <q-tab-panels v-model="tab" animated>
+          <q-tab-panels class="no-effict q-my-lg" v-model="tab" animated>
             <!-- //////////// -->
             <!-- location tap -->
             <!-- //////////// -->
-            <q-tab-panel name="location">
+            <q-tab-panel
+              class="q-pa-0 no-effict"
+              style="background: #eeeeee !important"
+              name="location"
+            >
               <PostView />
             </q-tab-panel>
             <!-- ///////////// -->
@@ -75,5 +77,6 @@ export default {
 .active-class {
   background-color: white;
   border-radius: 10px;
+  border: 1px solid $bg_slide;
 }
 </style>

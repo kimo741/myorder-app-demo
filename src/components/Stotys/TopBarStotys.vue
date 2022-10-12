@@ -1,7 +1,10 @@
 <template>
   <div class="container" dir="rtl">
     <div class="storys">
-      <div @click="uploadStory" class="q-my-md storys__items storys__mine">
+      <div
+        @click="uploadStory"
+        class="bg-transparent q-my-md storys__items storys__mine"
+      >
         <!-- //////////////////////////////////////////////// -->
         <!-- input to upload image but not display input fild -->
         <!-- //////////////////////////////////////////////// -->
@@ -21,7 +24,7 @@
       <div
         v-for="(story, i) in storys"
         :key="i"
-        class="storys__items q-my-md"
+        class="storys__items q-my-md bg-transparent"
         @click="openThisImg(story)"
       >
         <img :src="story.prof_img" />
@@ -288,7 +291,6 @@ export default {
     width: 65px;
     font-size: 0;
     margin-right: 10px;
-    background: white;
     img {
       width: 100%;
       height: 100%;
@@ -312,6 +314,7 @@ export default {
   }
   &__mine {
     border: 2px solid white;
+    border-radius: 50%;
     &::before {
       content: "";
       position: absolute;
