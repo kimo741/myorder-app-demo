@@ -195,7 +195,9 @@ export default {
       this.$router.push({ name: "ForgetPassword" });
     },
     ////////////////////////////////////////////
-    openAsGust() {},
+    openAsGust() {
+      this.$router.push("/");
+    },
     ////////////////////////////////////////////
     // on sellect musk
     onItemClick(mask) {

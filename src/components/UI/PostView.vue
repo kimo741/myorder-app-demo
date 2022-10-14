@@ -1,6 +1,6 @@
 <template>
-  <div class="post relative q-pa-sm">
-    <div class="post__top q-my-sm">
+  <div class="post relative q-my-md q-pa-sm">
+    <div class="post__top">
       <!-- ///////////// -->
       <!-- personal info -->
       <!-- ///////////// -->
@@ -10,28 +10,34 @@
             <!-- ///////////// -->
             <!-- profile image -->
             <!-- ///////////// -->
-            <q-img src="test/4.png" alt="" />
+            <q-img :src="postInfo.img_user" alt="" />
           </div>
           <div class="text-body2">
             <!-- //// -->
             <!-- name -->
             <!-- //// -->
-            <div @click="showProfile">اسم المطعم</div>
+            <div @click="showProfile">{{ postInfo.name }}</div>
             <!-- //// -->
             <!-- date -->
             <!-- //// -->
-            <div>اليوم منذ 5 ساعات</div>
+            <div>{{ postInfo.date }}</div>
           </div>
         </div>
       </div>
     </div>
 
     <q-card class="my-card full-width bg-transparent no-effict">
+      <!-- <div class="post__img"> -->
+      <!-- ////////// -->
+      <!-- disc post -->
+      <!-- ////////// -->
+      <div v-show="postInfo.disc !== ''" class="q-pa-md text-body2" dir="rtl">
+        {{ postInfo.disc }}
+      </div>
       <!-- ////////// -->
       <!-- image post -->
       <!-- ////////// -->
-      <!-- <div class="post__img"> -->
-      <q-img src="test/1.png " class="main-rounded"> </q-img>
+      <q-img :src="postInfo.img_post" class="main-rounded"> </q-img>
       <!-- </div> -->
       <q-card-actions
         class="relative no-effict full-width"
@@ -51,7 +57,9 @@
           <!-- /////////////////// -->
           <!-- views for this post -->
           <!-- /////////////////// -->
-          <div class="text-right text-body2">مشاهده 1,985</div>
+          <div v-if="parseInt(postInfo.views)" class="text-right text-body2">
+            مشاهده{{ postInfo.views }}
+          </div>
           <!-- //////////////// -->
           <!-- rating component -->
           <!-- //////////////// -->
@@ -59,7 +67,7 @@
             <q-rating
               class="text-right"
               dir="rtl"
-              v-model="rating"
+              v-model="postInfo.rate"
               max="5"
               size="1em"
               color="#DFB300"
@@ -78,11 +86,11 @@
             <!-- button for like -->
             <!-- /////////////// -->
             <q-btn
-              @click="addLike"
+              @click="toggleLike"
               size="md"
               flat
               class="col-1"
-              icon="eva-heart-outline"
+              :icon="like_it ? 'eva-heart' : 'eva-heart-outline'"
             />
             <!-- ////////////////// -->
             <!-- button for commint -->
@@ -109,7 +117,7 @@
                 @click="addToFavorits"
                 size="md"
                 flat
-                icon="img:icon/love-2.png"
+                :icon="add_to_fav ? 'star' : 'img:icon/love-2.png'"
               />
             </div>
           </div>
@@ -117,11 +125,13 @@
             <!-- ///////////////////////// -->
             <!-- if post not have any like -->
             <!-- ///////////////////////// -->
-            <div @click="showLiks" v-show="likes_count">
+            <div @click="showLiks" v-show="parseInt(postInfo.count_likes)">
               <!-- ///////////////////////////////////////////// -->
               <!-- if this post not have any like from my friend -->
               <!-- ///////////////////////////////////////////// -->
-              <div v-if="frinds_like">{{ likes_count }} اعجبو بهذاالمنشر</div>
+              <div v-if="friend_like_post.leangh">
+                {{ postInfo.count_likes }} اعجبو بهذاالمنشر
+              </div>
               <!-- ///////////////////////////////// -->
               <!-- if my firnd add like in this post -->
               <!-- ///////////////////////////////// -->
@@ -139,7 +149,7 @@
                   class="handel-likes text-body2 q-mx-sm"
                   style="color: #888fa0; right: 28px"
                 >
-                  اعجب بواسطه اسم المطعم و 1900 اخرون
+                  اعجب بواسطه اسم المطعم و {{ postInfo.count_likes }} اخرون
                 </div>
               </div>
             </div>
@@ -149,16 +159,14 @@
           <!-- //////// -->
           <div class="row post__comments q-my-sm q-pa-sm" dir="rtl">
             <div @click="showProfile" class="text-subtitle2 text-bold">
-              اسم الشخص
+              {{ postInfo.comments.top_comment_user }}
             </div>
             <div class="text-caption q-ml-sm" style="color: rgba(0, 0, 0, 0.5)">
-              وريم ايبسوم هو نموذج افتراضي وريم ايبسوم هو نموذج افتراضي وريم
-              ايبسوم هو نموذج افتراضي وريم ايبسوم هو نموذج افتراضي وريم ايبسوم
-              هو نموذج افتراضي وريم ايبسوم هو نموذج افتراضي
+              {{ postInfo.comments.top_comment_value }}
             </div>
           </div>
           <div @click="showComment" dir="rtl" class="q-my-sm">
-            مشاهدة 15تعليق
+            مشاهدة {{ postInfo.comments.commint_count }}تعليق
           </div>
           <q-separator />
           <div class="row justify-between" dir="rtl">
@@ -191,34 +199,71 @@
     </q-card>
     <!-- icon more option see it in scss  -->
     <div @click="moreOptions" dir="ltr" class="post__more"></div>
+    <q-dialog v-model="more_options">
+      <MoreOptions
+        @emitUnfollow="unfollowUser"
+        @emitToggleLike="toggleLike"
+        @emitMute="muteUser"
+        @emitReport="reportUser"
+      />
+    </q-dialog>
   </div>
 </template>
 
 <script>
 import { ref } from "vue";
+import MoreOptions from "../dialogs/MoreOptions.vue";
 export default {
-  props: {},
+  props: ["postInfo"],
   setup() {
     return {
+      add_to_fav: ref(false),
       frinds_like: ref(false),
+      like_it: ref(false),
       likes_count: ref(121),
       rating: ref(3.5),
+      friend_like_post: ref([]),
+      more_options: ref(false),
     };
   },
   methods: {
-    moreOptions() {},
+    moreOptions() {
+      this.more_options = true;
+    },
     addToCart() {},
-    addLike() {},
+    toggleLike() {
+      this.like_it = !this.like_it;
+      this.more_options = false;
+    },
     addComment() {},
     showComment() {},
     sharPost() {},
-    addToFavorits() {},
+    addToFavorits() {
+      this.add_to_fav = !this.add_to_fav;
+    },
     showLiks() {},
     showProfile() {},
+    //////////////////////////////////
+    //////////dialog/////////////////
+    //////////////////////////////////
+    unfollowUser() {
+      this.more_options = false;
+    },
+    muteUser() {
+      this.more_options = false;
+    },
+    reportUser() {
+      this.more_options = false;
+    },
   },
   mounted() {
-    console.log(this.$route.path == "/");
+    // get my friends id
+    // make variabl for my friend ids
+    // filter from my friend id & postInfo.likes_user_id
+    // return [idd]
+    //this.friend_like_post.push(data)
   },
+  components: { MoreOptions },
 };
 </script>
 

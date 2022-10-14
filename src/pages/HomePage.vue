@@ -31,7 +31,12 @@
             <q-tab icon="insights" name="discovery" />
           </q-tabs>
 
-          <q-tab-panels class="no-effict q-my-lg" v-model="tab" animated>
+          <q-tab-panels
+            style="background: #eeeeee !important"
+            class="no-effict q-my-lg"
+            v-model="tab"
+            animated
+          >
             <!-- //////////// -->
             <!-- location tap -->
             <!-- //////////// -->
@@ -40,7 +45,14 @@
               style="background: #eeeeee !important"
               name="location"
             >
-              <PostView />
+              <!-- posts -->
+              <div class="q-my-md bg-transparent">
+                <PostView
+                  v-for="(post, i) in posts"
+                  :postInfo="post"
+                  :key="i"
+                />
+              </div>
             </q-tab-panel>
             <!-- ///////////// -->
             <!-- discovery tap -->
@@ -66,13 +78,110 @@ export default {
   setup() {
     return {
       tab: ref("location"),
+      posts: ref([
+        {
+          id: "1",
+          name: "اسم المطعم",
+          img_user: "test/4.png",
+          disc: "لتتلتفققف",
+          date: "15/5/2022",
+          img_post: "test/1.png",
+          rate: "4",
+          views: "0",
+          count_likes: "155",
+          likes_user_id: ["1", "2", "3", "4"],
+          comments: {
+            user_id: "2",
+            top_comment_user: "اسم الشخص",
+            top_comment_value:
+              "وريم ايبسوم هو نموذج افتراضي وريم ايبسوم هو نموذج افتراضي وريم              ايبسوم هو نموذج افتراضي وريم ايبسوم هو نموذج افتراضي وريم ايبسومهو نموذج افتراضي وريم ايبسوم هو نموذج افتراضي",
+            commint_count: "15",
+          },
+        },
+        {
+          id: "1",
+          name: "اسم المطعم",
+          img_user: "test/4.png",
+          disc: "لتتلتفققف",
+          date: "15/5/2022",
+          img_post: "test/1.png",
+          rate: "4",
+          views: "0",
+          count_likes: "155",
+          likes_user_id: ["1", "2", "3", "4"],
+          comments: {
+            user_id: "2",
+            top_comment_user: "اسم الشخص",
+            top_comment_value:
+              "وريم ايبسوم هو نموذج افتراضي وريم ايبسوم هو نموذج افتراضي وريم              ايبسوم هو نموذج افتراضي وريم ايبسوم هو نموذج افتراضي وريم ايبسومهو نموذج افتراضي وريم ايبسوم هو نموذج افتراضي",
+            commint_count: "15",
+          },
+        },
+        {
+          id: "1",
+          name: "اسم المطعم",
+          img_user: "test/4.png",
+          disc: "لتتلتفققف",
+          date: "15/5/2022",
+          img_post: "test/1.png",
+          rate: "4",
+          views: "0",
+          count_likes: "155",
+          likes_user_id: ["1", "2", "3", "4"],
+          comments: {
+            user_id: "2",
+            top_comment_user: "اسم الشخص",
+            top_comment_value:
+              "وريم ايبسوم هو نموذج افتراضي وريم ايبسوم هو نموذج افتراضي وريم              ايبسوم هو نموذج افتراضي وريم ايبسوم هو نموذج افتراضي وريم ايبسومهو نموذج افتراضي وريم ايبسوم هو نموذج افتراضي",
+            commint_count: "15",
+          },
+        },
+        {
+          id: "1",
+          name: "اسم المطعم",
+          img_user: "test/4.png",
+          disc: "لتتلتفققف",
+          date: "15/5/2022",
+          img_post: "test/1.png",
+          rate: "4",
+          views: "0",
+          count_likes: "155",
+          likes_user_id: ["1", "2", "3", "4"],
+          comments: {
+            user_id: "2",
+            top_comment_user: "اسم الشخص",
+            top_comment_value:
+              "وريم ايبسوم هو نموذج افتراضي وريم ايبسوم هو نموذج افتراضي وريم              ايبسوم هو نموذج افتراضي وريم ايبسوم هو نموذج افتراضي وريم ايبسومهو نموذج افتراضي وريم ايبسوم هو نموذج افتراضي",
+            commint_count: "15",
+          },
+        },
+        {
+          id: "1",
+          name: "اسم المطعم",
+          img_user: "test/4.png",
+          disc: "لتتلتفققف",
+          date: "15/5/2022",
+          img_post: "test/1.png",
+          rate: "4",
+          views: "0",
+          count_likes: "155",
+          likes_user_id: ["1", "2", "3", "4"],
+          comments: {
+            user_id: "2",
+            top_comment_user: "اسم الشخص",
+            top_comment_value:
+              "وريم ايبسوم هو نموذج افتراضي وريم ايبسوم هو نموذج افتراضي وريم              ايبسوم هو نموذج افتراضي وريم ايبسوم هو نموذج افتراضي وريم ايبسومهو نموذج افتراضي وريم ايبسوم هو نموذج افتراضي",
+            commint_count: "15",
+          },
+        },
+      ]),
     };
   },
 };
 </script>
 <style lang="scss" scoped>
 .bg-taps {
-  background-color: $bg_slide !important;
+  background-color: $bg_slide;
 }
 .active-class {
   background-color: white;
