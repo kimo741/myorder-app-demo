@@ -237,7 +237,9 @@ export default {
     },
     addComment() {},
     showComment() {},
-    sharPost() {},
+    sharPost() {
+      this.$emit("sharePost", this.postInfo);
+    },
     addToFavorits() {
       this.add_to_fav = !this.add_to_fav;
     },

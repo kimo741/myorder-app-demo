@@ -51,7 +51,14 @@
                   v-for="(post, i) in posts"
                   :postInfo="post"
                   :key="i"
+                  @sharePost="sharePost"
                 />
+                <q-dialog full-width v-model="share_dialog" position="bottom">
+                  <SharePost
+                    @closeShareDialog="closeShareDialog"
+                    :postdata="share_post_data"
+                  />
+                </q-dialog>
               </div>
             </q-tab-panel>
             <!-- ///////////// -->
@@ -70,14 +77,22 @@ import { ref } from "vue";
 import MainNav from "../components/Bar/top/MainNav.vue";
 import TopBarStotys from "src/components/Stotys/TopBarStotys.vue";
 import PostView from "src/components/UI/PostView.vue";
-// import BackAndSkip from "src/components/Bar/top/backAndSkip.vue";
+import SharePost from "../components/dialogs/SharePost.vue";
+import BackAndSkip from "src/components/Bar/top/backAndSkip.vue";
 
 export default {
   name: "IndexPage",
-  components: { MainNav, TopBarStotys, PostView },
+  components: {
+    MainNav,
+    TopBarStotys,
+    PostView,
+    SharePost,
+  },
   setup() {
     return {
       tab: ref("location"),
+      share_dialog: ref(false),
+      share_post_data: ref(""),
       posts: ref([
         {
           id: "1",
@@ -176,6 +191,15 @@ export default {
         },
       ]),
     };
+  },
+  methods: {
+    closeShareDialog() {
+      this.share_dialog = false;
+    },
+    sharePost(data) {
+      this.share_dialog = true;
+      this.share_post_data = data;
+    },
   },
 };
 </script>

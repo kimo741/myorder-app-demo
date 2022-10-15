@@ -55,6 +55,10 @@ small,
   margin: auto;
 }
 
+.q-my-auto {
+  margin: auto 0;
+}
+
 .small-screen-only {
   @media (max-width: $breakpoint-xs-max) {
     display: block;
@@ -147,6 +151,21 @@ small,
   box-shadow: none !important;
 }
 
+.text-left {
+  text-align: left;
+}
+
+.text-right {
+  text-align: right;
+}
+
+// .no-wrap {
+//   overflow-wrap: normal;
+//   text-overflow: ellipsis;
+//   white-space: nowrap;
+//   overflow-x: auto;
+// }
+
 /////////////////////////////////////////////
 // some edit in global component inside quaser
 /////////////////////////////////////////////
@@ -183,3 +202,6 @@ small,
 
 /////////////////////////////////////////////
 /////////////////////////////////////////////
+.text-hint {
+  color: $font-hint;
+}
