@@ -128,6 +128,7 @@ export default {
     // finish
     lastSlide() {
       this.$router.push({ name: "login" });
+      localStorage.setItem("first_view", true);
     },
   },
   components: { BackAndSkip },
