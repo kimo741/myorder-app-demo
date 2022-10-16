@@ -1,0 +1,5 @@
+
+
+1-C:\Program Files\Java\jdk1.8.0_333\binkeytool -genkey -v -keystore my-release-key.keystore -alias alias_name -keyalg RSA -keysize 2048 -validity 20000
+2-jarsigner -verbose -sigalg SHA1withRSA -digestalg SHA1 -keystore E:\land\almazaq.keystore app-release-unsigned.apk almazaq
+3-C:\Users\k.khaled\AppData\Local\Android\Sdk\build-tools\28.0.3\zipalign -v 4 app-release-unsigned.apk nebras-almazaq.apk

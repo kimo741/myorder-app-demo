@@ -97,7 +97,7 @@
                   id="testing-code"
                   class="col-10 text-right handel_overflow text-hint"
                 >
-                  http://localhost:8080/#/post/{{ postdata.id }}
+                  `my-order://post/{{ postdata.id }}
                 </div>
                 <div class="col-2 text-center">
                   <q-icon name="img:icon/link-copy.png" />
@@ -132,7 +132,7 @@ export default {
     telegramShare() {},
     dropboxShare() {},
     copyPostUrl() {
-      copyToClipboard(`http://localhost:8080/#/post/${this.postdata.id}`)
+      copyToClipboard(`my-order://post/${this.postdata.id}`)
         .then(() => {
           this.$q.notify({
             message: "تم نسخ رابط المنشور",
