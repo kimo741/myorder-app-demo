@@ -87,11 +87,8 @@
               <q-btn
                 class="main-rounded full-width"
                 color="primary"
-                v-clipboard:copy="'http://localhost:8080/#/post/' + postdata.id"
-                v-clipboard:success="onCopy"
-                v-clipboard:error="onError"
                 label="نسخ"
-                @click.stop.prevent="copyTestingCode"
+                @click.stop.prevent="copyPostUrl"
               />
             </div>
             <div class="col-8 q-my-auto">
@@ -123,6 +120,7 @@
 </template>
 
 <script>
+import { copyToClipboard } from "quasar";
 export default {
   props: ["postdata"],
   methods: {
@@ -133,15 +131,20 @@ export default {
     whatsappShare() {},
     telegramShare() {},
     dropboxShare() {},
-    copyTestingCode() {
-      // let testingCodeToCopy = document.querySelector("#testing-code");
-      // // testingCodeToCopy.setAttribute("type", "text");
-      // testingCodeToCopy.select();
-      // try {
-      //   document.execCommand("copy");
-      // } catch (err) {
-      //   console.log("Oops, unable to copy");
-      // }
+    copyPostUrl() {
+      copyToClipboard(`http://localhost:8080/#/post/${this.postdata.id}`)
+        .then(() => {
+          this.$q.notify({
+            message: "تم نسخ رابط المنشور",
+            color: "green",
+          });
+        })
+        .catch(() => {
+          this.$q.notify({
+            message: "لم يتم نسخ المنشور",
+            color: "red",
+          });
+        });
     },
   },
 };
