@@ -6,14 +6,14 @@
     <BackAndSkip class="q-py-md" iconSrc="arrow_forward_ios" />
     <!-- //////////////////////// -->
     <div class="text-h4 text-bold">التحقق من رقم الهاتف</div>
-    <div class="text-body2">اعد ادخال كلمة كرور جديده</div>
+    <div class="text-body2">اعد ادخال كلمة مرور جديده</div>
     <q-form class="q-my-lg row" @reset="onReset" @submit.prevent="sendVifrCode">
       <!-- ////////////////////// -->
       <!-- input for new password -->
       <!-- ////////////////////// -->
       <q-input
         class="col-11 q-mx-auto q-my-md main-rounded"
-        bg-color="grey-3"
+        bg-color="4"
         rounded
         label="كلمة المور"
         filled
@@ -40,7 +40,7 @@
 
       <q-input
         class="col-11 q-mx-auto q-my-sm main-rounded"
-        bg-color="grey-3"
+        bg-color="grey-4"
         rounded
         filled
         label=" تأكيد كلمة المور"

@@ -21,7 +21,7 @@
           <q-tabs
             v-model="tab"
             dense
-            class="bg-transparent no-effict primary bg-taps"
+            class="no-effict primary bg-taps"
             align="justify"
             indicator-color="transparent"
             narrow-indicator
@@ -64,7 +64,15 @@
             <!-- ///////////// -->
             <!-- discovery tap -->
             <!-- ///////////// -->
-            <q-tab-panel name="discovery"> </q-tab-panel>
+            <q-tab-panel
+              class="q-pa-0 no-effict"
+              style="background: #eeeeee !important"
+              name="discovery"
+            >
+              <OffersCarousel />
+              <TitleBar @showAll="showAll" label="الأكثر تقيما" />
+              <SlideItemH :products="products" />
+            </q-tab-panel>
           </q-tab-panels>
         </q-card>
       </div>
@@ -78,7 +86,9 @@ import MainNav from "../components/Bar/top/MainNav.vue";
 import TopBarStotys from "src/components/Stotys/TopBarStotys.vue";
 import PostView from "src/components/UI/PostView.vue";
 import SharePost from "../components/dialogs/SharePost.vue";
-import BackAndSkip from "src/components/Bar/top/backAndSkip.vue";
+import TitleBar from "src/components/UI/TitleBar.vue";
+import OffersCarousel from "src/components/carousels/OffersCarousel.vue";
+import SlideItemH from "src/components/UI/sliders/SlideItemH.vue";
 
 export default {
   name: "IndexPage",
@@ -87,6 +97,9 @@ export default {
     TopBarStotys,
     PostView,
     SharePost,
+    TitleBar,
+    OffersCarousel,
+    SlideItemH,
   },
   setup() {
     return {
@@ -97,10 +110,10 @@ export default {
         {
           id: "1",
           name: "اسم المطعم",
-          img_user: "test/4.png",
-          disc: "لتتلتفققف",
+          img_user: "test/3.png",
+          disc: "وريم ايبسوم هو نموذج افتراضي وريم ايبسوم هو نموذج افتراض",
           date: "15/5/2022",
-          img_post: "test/1.png",
+          img_post: "test/2.png",
           rate: "4",
           views: "0",
           count_likes: "155",
@@ -116,10 +129,10 @@ export default {
         {
           id: "1",
           name: "اسم المطعم",
-          img_user: "test/4.png",
-          disc: "لتتلتفققف",
+          img_user: "test/1.png",
+          disc: "وريم ايبسوم هو نموذج افتراضي وريم ايبسوم هو نموذج افتراض",
           date: "15/5/2022",
-          img_post: "test/1.png",
+          img_post: "test/5.png",
           rate: "4",
           views: "0",
           count_likes: "155",
@@ -135,10 +148,10 @@ export default {
         {
           id: "1",
           name: "اسم المطعم",
-          img_user: "test/4.png",
-          disc: "لتتلتفققف",
+          img_user: "test/2.png",
+          disc: "وريم ايبسوم هو نموذج افتراضي وريم ايبسوم هو نموذج افتراض",
           date: "15/5/2022",
-          img_post: "test/1.png",
+          img_post: "test/4.png",
           rate: "4",
           views: "0",
           count_likes: "155",
@@ -151,43 +164,37 @@ export default {
             commint_count: "15",
           },
         },
+      ]),
+      products: ref([
         {
           id: "1",
-          name: "اسم المطعم",
-          img_user: "test/4.png",
-          disc: "لتتلتفققف",
-          date: "15/5/2022",
-          img_post: "test/1.png",
-          rate: "4",
-          views: "0",
-          count_likes: "155",
-          likes_user_id: ["1", "2", "3", "4"],
-          comments: {
-            user_id: "2",
-            top_comment_user: "اسم الشخص",
-            top_comment_value:
-              "وريم ايبسوم هو نموذج افتراضي وريم ايبسوم هو نموذج افتراضي وريم              ايبسوم هو نموذج افتراضي وريم ايبسوم هو نموذج افتراضي وريم ايبسومهو نموذج افتراضي وريم ايبسوم هو نموذج افتراضي",
-            commint_count: "15",
-          },
+          img: "test/1.png",
+          rating: "3",
+          view: "156",
         },
         {
-          id: "1",
-          name: "اسم المطعم",
-          img_user: "test/4.png",
-          disc: "لتتلتفققف",
-          date: "15/5/2022",
-          img_post: "test/1.png",
-          rate: "4",
-          views: "0",
-          count_likes: "155",
-          likes_user_id: ["1", "2", "3", "4"],
-          comments: {
-            user_id: "2",
-            top_comment_user: "اسم الشخص",
-            top_comment_value:
-              "وريم ايبسوم هو نموذج افتراضي وريم ايبسوم هو نموذج افتراضي وريم              ايبسوم هو نموذج افتراضي وريم ايبسوم هو نموذج افتراضي وريم ايبسومهو نموذج افتراضي وريم ايبسوم هو نموذج افتراضي",
-            commint_count: "15",
-          },
+          id: "2",
+          img: "test/2.png",
+          rating: "2",
+          view: "14556",
+        },
+        {
+          id: "3",
+          img: "test/3.png",
+          rating: "4.5",
+          view: "141",
+        },
+        {
+          id: "4",
+          img: "test/4.png",
+          rating: "4",
+          view: "514489",
+        },
+        {
+          id: "5",
+          img: "test/55.png",
+          rating: "1",
+          view: "418712",
         },
       ]),
     };
@@ -205,7 +212,8 @@ export default {
 </script>
 <style lang="scss" scoped>
 .bg-taps {
-  background-color: $bg_slide;
+  background: rgba(118, 118, 128, 0.12);
+  border-radius: 8px !important;
 }
 .active-class {
   background-color: white;

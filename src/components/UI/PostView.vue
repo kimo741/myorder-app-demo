@@ -10,7 +10,7 @@
             <!-- ///////////// -->
             <!-- profile image -->
             <!-- ///////////// -->
-            <q-img :src="postInfo.img_user" alt="" />
+            <img :src="postInfo.img_user" alt="" />
           </div>
           <div class="text-body2">
             <!-- //// -->

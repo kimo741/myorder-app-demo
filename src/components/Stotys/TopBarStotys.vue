@@ -16,6 +16,12 @@
           type="file"
         />
         <img :src="storys[0].img" />
+        <div
+          style="color: black; font-size: 13px; white-space: nowrap"
+          class="storys__name text-center text-normal"
+        >
+          إضافة قصه
+        </div>
       </div>
       <!-- //////////////////////////////////////////// -->
       <!-- //////////for loop in other story/////////// -->
@@ -29,7 +35,7 @@
       >
         <img :src="story.prof_img" />
         <!-- i am stoped here 👇👇/////////////////////////  -->
-        <div class="storys__name text-center text-bold text-body1">
+        <div class="storys__name text-center text-normal">
           {{ story.name }}
         </div>
         <!--///////////////////👆👆///////////////////////// -->
@@ -178,25 +184,25 @@ export default {
       storys: ref([
         {
           id: 1,
-          name: "name",
+          name: "متجر",
           img: "test/1.png",
           prof_img: "test/1.png",
         },
         {
           id: 2,
-          name: "name",
+          name: "مطعم",
           img: "test/2.png",
           prof_img: "test/2.png",
         },
         {
           id: 3,
-          name: "name",
+          name: "مقهى",
           img: "test/3.png",
           prof_img: "test/3.png",
         },
         {
           id: 4,
-          name: "name",
+          name: "مشعل إبراهيم",
           img: "test/4.png",
           prof_img: "test/4.png",
         },
@@ -373,6 +379,9 @@ export default {
   &__name {
     overflow: hidden;
     text-overflow: ellipsis;
+    font-size: 13px;
+    white-space: nowrap;
+    color: #000;
   }
 }
 .closePopup {

@@ -200,6 +200,24 @@ small,
   padding: 0;
 }
 
+.offer-carousel {
+  .q-carousel__navigation .q-btn {
+    padding: 1px !important;
+    margin: 3px 1px;
+    font-size: 0.4rem !important;
+  }
+
+  .q-carousel__navigation-inner {
+    bottom: -50px !important;
+  }
+
+  .q-carousel__control {
+    bottom: -40px;
+  }
+
+  .q-btn {}
+}
+
 /////////////////////////////////////////////
 /////////////////////////////////////////////
 .text-hint {

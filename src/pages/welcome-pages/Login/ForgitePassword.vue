@@ -9,7 +9,7 @@
       iconSrc="arrow_forward_ios"
     />
     <div class="text-h5">نسيت كلمة المرور</div>
-    <div class="text-body2">أدخل رقم الجوال لارسال كود التحقق دخول</div>
+    <div class="text-body2">أدخل رقم الجوال لإرسال كود التحقق</div>
     <q-form class="q-my-lg row" @submit.prevent="sendVifrCode">
       <!-- /////////////////////////// -->
       <!-- input for type phone numper -->
@@ -19,7 +19,7 @@
         flat
         v-model="number"
         type="number"
-        bg-color="grey-3"
+        bg-color="grey-"
         rounded
         required
         filled

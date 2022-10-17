@@ -18,7 +18,7 @@
             flat
             v-model="number"
             type="number"
-            bg-color="grey-3"
+            bg-color="grey-4"
             rounded
             required
             filled
@@ -72,7 +72,7 @@
         <div class="col-10 q-my-md">
           <q-input
             class="main-rounded"
-            bg-color="grey-3"
+            bg-color="grey-4"
             rounded
             filled
             required

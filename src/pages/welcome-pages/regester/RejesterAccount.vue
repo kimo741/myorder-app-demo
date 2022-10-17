@@ -49,7 +49,7 @@
         <!-- /////////////////// -->
         <q-input
           class="col-7 q-mx-auto q-my-sm main-rounded"
-          bg-color="grey-3"
+          bg-color="grey-4"
           rounded
           filled
           label="الاسم"
@@ -62,7 +62,7 @@
         <!-- /////////////////// -->
         <q-input
           class="col-11 q-mx-auto q-my-sm main-rounded"
-          bg-color="grey-3"
+          bg-color="grey-4"
           rounded
           filled
           label="رقم الجوال"
@@ -76,7 +76,7 @@
         <!-- ////////////////////// -->
         <q-input
           class="col-11 q-mx-auto q-my-md main-rounded"
-          bg-color="grey-3"
+          bg-color="grey-4"
           rounded
           label="كلمة المور"
           filled
