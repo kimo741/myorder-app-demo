@@ -1,13 +1,25 @@
 <template>
   <div class="horizental-slide" dir="rtl">
+    <!-- ///////// -->
+    <!-- loop card -->
+    <!-- ///////// -->
     <q-card
       v-for="product in products"
       :key="product.id"
       class="my-card horizental-slide__items no-effict"
     >
+      <!-- ///////////// -->
+      <!-- product image -->
+      <!-- ///////////// -->
       <img :src="product.img" />
       <q-card-section class="relative horizental-slide__items--section">
+        <!-- /////////////////// -->
+        <!-- product views count -->
+        <!-- /////////////////// -->
         <div class="text-body2">مشاهدة{{ product.view }}</div>
+        <!-- ////////////// -->
+        <!-- product rating -->
+        <!-- ////////////// -->
         <q-rating
           size="12px"
           disable
@@ -15,6 +27,9 @@
           :max="5"
           color="primary"
         />
+        <!-- //////////////// -->
+        <!-- icon add to cart -->
+        <!-- //////////////// -->
         <q-icon
           size="md"
           name="img:icon/add-to-cart.png"
@@ -48,7 +63,8 @@ export default {
     flex: 0 0 150px;
     position: relative;
     display: inline-block;
-    height: 210px;
+    scroll-snap-align: start;
+    // height: 205px;
     width: 150px;
     margin-right: 5px;
     img {

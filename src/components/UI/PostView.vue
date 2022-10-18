@@ -197,7 +197,9 @@
         </div>
       </q-card-actions>
     </q-card>
+    <!-- //////////////////////////////// -->
     <!-- icon more option see it in scss  -->
+    <!-- //////////////////////////////// -->
     <div @click="moreOptions" dir="ltr" class="post__more"></div>
     <q-dialog v-model="more_options">
       <MoreOptions

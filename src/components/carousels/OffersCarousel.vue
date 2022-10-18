@@ -13,12 +13,13 @@
       style="padding: 0; margin-bottom: 50px !important; overflow: visible"
     >
       <q-carousel-slide
-        v-for="(item, i) in sliders"
+        v-for="(item, i) in offers"
         :key="i"
         :name="item.id"
         class="q-pa-0 full-width full-height column no-wrap flex-center"
       >
         <img class="full-width full-height" :src="item.image" />
+        <!-- title for offer show on image -->
         <div class="q-mt-md text-center" style="position: absolute"></div>
       </q-carousel-slide>
     </q-carousel>
@@ -28,15 +29,11 @@
 import { ref } from "vue";
 
 export default {
+  props: ["offers"],
   setup() {
     return {
       navPos: ref("bottom"),
       slide: ref("1"),
-      sliders: ref([
-        { id: "1", image: "img/offer-50.png", lable: "عروض تصل لأكثر من 50%" },
-        { id: "2", image: "test/3.png", lable: "عروض تصل لأكثر من 50%" },
-        { id: "3", image: "test/4.png", lable: "عروض تصل لأكثر من 50%" },
-      ]),
     };
   },
 };

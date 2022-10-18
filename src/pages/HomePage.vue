@@ -65,13 +65,30 @@
             <!-- discovery tap -->
             <!-- ///////////// -->
             <q-tab-panel
-              class="q-pa-0 no-effict"
+              class="full-height q-pa-0 no-effict"
               style="background: #eeeeee !important"
               name="discovery"
             >
-              <OffersCarousel />
+              <!-- /////////////// -->
+              <!-- Banner Carousel -->
+              <!-- /////////////// -->
+              <OffersCarousel :offers="test_carousel" />
+              <!-- ///////////////////////// -->
+              <!-- top Title for top product  -->
+              <!-- ///////////////////////// -->
               <TitleBar @showAll="showAll" label="الأكثر تقيما" />
+              <!-- //////////// -->
+              <!-- top products -->
+              <!-- //////////// -->
               <SlideItemH :products="products" />
+              <!-- /////////////////////////////////////// -->
+              <!-- top Title for slide suggest component  -->
+              <!-- /////////////////////////////////////// -->
+              <TitleBar class="q-my-md" @showAll="showAll" label="موصى به لك" />
+              <!-- //////////////// -->
+              <!-- suggest for you  -->
+              <!-- //////////////// -->
+              <SliderItemV :products="products" />
             </q-tab-panel>
           </q-tab-panels>
         </q-card>
@@ -89,6 +106,7 @@ import SharePost from "../components/dialogs/SharePost.vue";
 import TitleBar from "src/components/UI/TitleBar.vue";
 import OffersCarousel from "src/components/carousels/OffersCarousel.vue";
 import SlideItemH from "src/components/UI/sliders/SlideItemH.vue";
+import SliderItemV from "src/components/UI/sliders/SliderItemV.vue";
 
 export default {
   name: "IndexPage",
@@ -100,12 +118,17 @@ export default {
     TitleBar,
     OffersCarousel,
     SlideItemH,
+    SliderItemV,
   },
   setup() {
     return {
+      // tap
       tab: ref("location"),
+      // toggle dialog for for share
       share_dialog: ref(false),
+      // data for post shaing
       share_post_data: ref(""),
+      // test array for posts
       posts: ref([
         {
           id: "1",
@@ -165,6 +188,7 @@ export default {
           },
         },
       ]),
+      // array test product
       products: ref([
         {
           id: "1",
@@ -192,18 +216,26 @@ export default {
         },
         {
           id: "5",
-          img: "test/55.png",
+          img: "test/5.png",
           rating: "1",
           view: "418712",
         },
+      ]),
+      // aray test for carousel banner
+      test_carousel: ref([
+        { id: "1", image: "img/offer-50.png", lable: "عروض تصل لأكثر من 50%" },
+        { id: "2", image: "test/3.png", lable: "عروض تصل لأكثر من 50%" },
+        { id: "3", image: "test/4.png", lable: "عروض تصل لأكثر من 50%" },
       ]),
     };
   },
   methods: {
     closeShareDialog() {
+      // toggle dialog share
       this.share_dialog = false;
     },
     sharePost(data) {
+      // pass data for share
       this.share_dialog = true;
       this.share_post_data = data;
     },

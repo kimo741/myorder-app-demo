@@ -5,9 +5,13 @@ import { wlecomePage , wilcomeSlider , login , verification ,ForgetPassword, cre
 //////////////////////////////////////////
 //////////////////////////////////////////
 //////////////////////////////////////////
+import ShopsPage from 'src/pages/ShopsPage.vue'
 
 const routes = [
   {
+    /////////////////////////////
+    // wellcom and auth pages///
+    ///////////////////////////
     path:'/welcome',
     component:wlecomePage,
     name:"welcome",
@@ -47,13 +51,28 @@ const routes = [
       },
     ]
   },
+      /////////////////
+     // main layouts//
+    ////////////////
   {
     path: '/',
     component: () => import('layouts/MainLayout.vue'),
     children: [
+    ////////////////
+    // home page///
+    //////////////
       { path: '',
       component: () => import('pages/HomePage.vue'),
-      meta: { firstView: true }, }
+      meta: { firstView: true },
+      },
+     ///////////////
+    // shops page//
+   ///////////////
+      { path: 'shops',
+      component: ShopsPage,
+      meta: { firstView: true },
+      name:"shops"
+      }
     ]
   },
 
