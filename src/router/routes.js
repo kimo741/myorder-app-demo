@@ -6,6 +6,7 @@ import { wlecomePage , wilcomeSlider , login , verification ,ForgetPassword, cre
 //////////////////////////////////////////
 //////////////////////////////////////////
 import ShopsPage from 'src/pages/ShopsPage.vue'
+import Search from 'src/pages/serchPage/MainSearch.vue'
 
 const routes = [
   {
@@ -32,7 +33,7 @@ const routes = [
         component:verification,
         name:"verification",
         props:true
-      },
+        },
       {
         path:'ForgetPassword',
         component:ForgetPassword,
@@ -72,6 +73,14 @@ const routes = [
       component: ShopsPage,
       meta: { firstView: true },
       name:"shops"
+      },
+     ///////////////
+    // shops page//
+   ///////////////
+      { path: 'search',
+      component: Search,
+      meta: { firstView: true },
+      name:"search"
       }
     ]
   },

@@ -1,6 +1,8 @@
 
 import { boot } from 'quasar/wrappers'
 export default boot(({ router }) => {
+
+  // /////////////////////////////
 router.beforeEach((to, _, next) => {
   var canAccess = localStorage.getItem("first_view");
   if (to.meta.firstView && !canAccess) {

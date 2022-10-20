@@ -6,7 +6,6 @@
       animated
       :navigation-position="navPos"
       navigation
-      :arrows="false"
       height="120px"
       control-color="primary"
       class="offer-carousel q-ma-0 full-width text-white rounded-borders"
@@ -18,7 +17,11 @@
         :name="item.id"
         class="q-pa-0 full-width full-height column no-wrap flex-center"
       >
-        <img class="full-width full-height" :src="item.image" />
+        <img
+          style="border-radius: 10px"
+          class="full-width full-height"
+          :src="item.image"
+        />
         <!-- title for offer show on image -->
         <div class="q-mt-md text-center" style="position: absolute"></div>
       </q-carousel-slide>

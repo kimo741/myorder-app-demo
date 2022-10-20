@@ -52,7 +52,7 @@ export default {
 };
 </script>
 
-<style lang="scss" scoped>
+<style lang="scss" scoped >
 .horizental-slide {
   // padding: 0 1rem 1.3rem;
   display: flex;
@@ -83,7 +83,7 @@ export default {
   &__add-to-card {
     position: absolute;
     left: 70% !important;
-    top: -20px !important;
+    top: -15px !important;
   }
 }
 </style>
