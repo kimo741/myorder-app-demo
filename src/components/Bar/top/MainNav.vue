@@ -73,6 +73,7 @@
           icon="img:icon\Search.png"
           flat
           @click="openSearchPage"
+          to="/search"
         />
       </div>
     </div>
