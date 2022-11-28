@@ -19,7 +19,7 @@ p {
 .text-h3,
 .text-h4,
 .text-h5 {
-  margin: 1rem 0 1.38rem;
+  // margin: 1rem 0 1.38rem;
   font-family: 'Tajawal', sans-serif;
   font-weight: 400;
   line-height: 1.3;
@@ -27,19 +27,19 @@ p {
 
 .text-h1 {
   margin-top: 0;
-  font-size: 1.802rem;
+  font-size: 1.2rem;
 }
 
 .text-h2 {
-  font-size: 1.602rem;
+  font-size: 1.1rem;
 }
 
 .text-h3 {
-  font-size: 1.424rem;
+  font-size: 1rem;
 }
 
 .text-h4 {
-  font-size: 1.266rem;
+  font-size: 0.266rem;
 }
 
 .text-h5 {
@@ -88,8 +88,8 @@ small,
 }
 
 *::-webkit-scrollbar {
-  width: 5px;
-  height: 5px;
+  width: 0;
+  height: 0;
 }
 
 *::-webkit-scrollbar-thumb {
@@ -155,16 +155,33 @@ small,
   text-align: left;
 }
 
+.q-py-0 {
+  padding-top: 0;
+  padding-bottom: 0;
+}
+
 .text-right {
   text-align: right;
 }
 
-// .no-wrap {
-//   overflow-wrap: normal;
-//   text-overflow: ellipsis;
-//   white-space: nowrap;
-//   overflow-x: auto;
-// }
+.text-500 {
+  font-weight: 500;
+}
+
+.text-no-wrap {
+  overflow: hidden;
+  overflow-wrap: normal;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.main-transetion {
+  transition: all 1s linear !important;
+}
+
+.card-shadow {
+  box-shadow: 0 1px 5px rgb(0 0 0 / 20%), 0 2px 2px rgb(0 0 0 / 14%), 0 3px 1px -2px rgb(0 0 0 / 12%) !important;
+}
 
 /////////////////////////////////////////////
 // some edit in global component inside quaser
@@ -197,7 +214,7 @@ small,
 }
 
 .popUp-story .q-dialog__inner--minimized {
-  padding: 0;
+  padding: 0 !important;
 }
 
 .offer-carousel {
@@ -215,11 +232,137 @@ small,
     bottom: -40px;
   }
 
-  .q-btn {}
+}
+
+// edit input outline
+.edit-round .q-field__control {
+  border-radius: 18px !important;
 }
 
 /////////////////////////////////////////////
 /////////////////////////////////////////////
 .text-hint {
   color: $font-hint;
+}
+
+
+.vertical-list {
+  position: relative;
+  // margin: 0 10px;
+  border-radius: 12px;
+  display: flex;
+  flex-direction: column;
+  overflow-y: scroll;
+  scroll-padding: 100%;
+  scroll-snap-type: y mandatory;
+  height: max-content;
+  padding: 4px;
+
+  .my-card {
+    padding: 0 15px;
+    border-radius: 10px;
+    flex: 0 0 100%;
+    display: inline-block;
+    margin: 5px 0;
+    transition: all 1s ease-in-out;
+
+    .hint {
+      font-size: 14px;
+      overflow: hidden;
+      white-space: nowrap;
+      text-overflow: ellipsis;
+
+      font-weight: 500;
+    }
+
+    img {
+      max-height: 100%;
+      max-width: 100%;
+      margin: auto;
+    }
+  }
+}
+
+.horizental-list {
+  position: relative;
+  // margin: 0 10px;
+  border-radius: 12px;
+  display: flex;
+  flex-direction: row;
+  overflow-x: scroll;
+  // scroll-padding: 100%;
+  scroll-snap-type: x mandatory;
+  height: max-content;
+  padding: 4px;
+
+  .my-card {
+    padding: 0 15px;
+    border-radius: 10px;
+    flex: 0 0 20%;
+    display: inline-block;
+    margin: 5px 0;
+    white-space: nowrap;
+
+    .hint {
+      font-size: 14px;
+      overflow: hidden;
+      white-space: nowrap;
+      text-overflow: ellipsis;
+
+      font-weight: 500;
+    }
+
+    img {
+      height: 90%;
+      max-width: 100%;
+      margin: auto;
+    }
+  }
+}
+
+.input {
+  width: 100%;
+  background: rgba(232, 232, 232, 0.5);
+  border: 0.5px solid rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+  /* text-align: left !important; */
+}
+
+// hide scroll bar
+.show-scroll-bar {
+  &::-webkit-scrollbar {
+    width: 5px;
+    height: 5px;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background: linear-gradient(to top, transparent, $primary, transparent);
+    border-radius: 14px;
+    // border: 5px solid $primary;
+  }
+}
+
+.text-sm {
+  font-size: 12px;
+}
+
+input {
+  direction: rtl !important;
+}
+
+.q-field__native {
+  direction: rtl !important
+}
+
+.q-field__label {
+  direction: rtl !important;
+  right: 0 !important;
+  left: auto;
+}
+
+/* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
 }

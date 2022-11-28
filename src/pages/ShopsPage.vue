@@ -61,7 +61,10 @@
               <!-- /////////////// -->
               <!-- virtical slider -->
               <!-- /////////////// -->
-              <DinamicSliderVindors :vindors="products" />
+              <DinamicSliderVindors
+                @openVendorPage="openVendorPage"
+                :vindors="products"
+              />
               <!-- ///////////////////////// -->
               <!-- top Title for all vindors -->
               <!-- ///////////////////////// -->
@@ -69,7 +72,11 @@
               <!-- ///////////////// -->
               <!--  horzental slider -->
               <!-- ///////////////// -->
-              <DinamicSliderVindors :vindors="products" :horzental="true" />
+              <DinamicSliderVindors
+                @openVendorPage="openVendorPage"
+                :vindors="products"
+                :horzental="true"
+              />
             </q-tab-panel>
           </q-tab-panels>
         </q-card>
@@ -174,6 +181,16 @@ export default {
         },
       ]),
     };
+  },
+  methods: {
+    openVendorPage(product) {
+      this.$router.push({
+        name: "vendorPage",
+        params: {
+          id: product.id,
+        },
+      });
+    },
   },
 };
 </script>

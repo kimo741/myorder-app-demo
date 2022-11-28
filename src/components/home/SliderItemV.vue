@@ -96,7 +96,7 @@ export default {
     direction: ltr;
     position: absolute;
     bottom: 4px;
-    left: 85%;
+    left: 5%;
   }
 }
 </style>

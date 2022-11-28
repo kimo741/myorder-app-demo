@@ -82,7 +82,7 @@ export default {
   }
   &__add-to-card {
     position: absolute;
-    left: 70% !important;
+    left: 10% !important;
     top: -15px !important;
   }
 }

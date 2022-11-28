@@ -3,8 +3,14 @@
     <div class="col">
       <div class="text-body2 text-bold">{{ label }}</div>
     </div>
-    <div class="col text-body2 text-right">
-      <q-btn @click="$emit('showAll')" size="sm" label="مشاهدة الكل" flat color="primary"></q-btn>
+    <div class="col text-body2 text-left">
+      <q-btn
+        @click="$emit('showAll')"
+        size="sm"
+        label="مشاهدة الكل"
+        flat
+        color="primary"
+      ></q-btn>
     </div>
   </div>
 </template>

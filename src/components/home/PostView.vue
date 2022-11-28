@@ -12,7 +12,7 @@
             <!-- ///////////// -->
             <img :src="postInfo.img_user" alt="" />
           </div>
-          <div class="text-body2">
+          <div class="text-body2 q-mr-sm">
             <!-- //// -->
             <!-- name -->
             <!-- //// -->

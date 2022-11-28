@@ -1,35 +1,17 @@
 <template>
-  <!-- ///////////////// -->
-  <!-- conteainer slider -->
-  <!-- ///////////////// -->
-  <div
-    class="horizental-slide"
-    :class="horzental ? 'vertical_slide' : ''"
-    dir="rtl"
-  >
-    <!-- /////////////////// -->
-    <!-- loop card for items -->
-    <!-- /////////////////// -->
-    <q-card
-      v-for="(product, i) in vindors"
-      @click.once="$emit('openVendorPage', product)"
-      :key="i"
-      class="my-card horizental-slide__items"
-      :class="horzental ? 'vertical_slide__item' : ''"
-      flat
-    >
+  <div class="row justify-center items-center q-my-md">
+    <q-card class="my-card horizental-slide__items" flat>
+      <!-- :class="horzental ? 'vertical_slide__item' : ''" -->
       <q-card-section horizontal class="row q-pa-sm">
         <!-- ///////////// -->
         <!-- product image -->
         <!-- ///////////// -->
-        <div
-          class="horizental-slide__img col-2"
-          :style="horzental ? 'width:19% ' : ''"
-        >
+        <!-- :style="horzental ? 'width:19% ' : ''" -->
+        <div class="horizental-slide__img col-2">
           <!-- ////////////////// -->
           <!-- src image of items -->
           <!-- ////////////////// -->
-          <img class="" :src="product.img" style="border-radius: 8px" />
+          <img class="" :src="vendor.img" style="border-radius: 8px" />
         </div>
         <!-- //////////////////////////////////-->
         <!-- separator between image & content -->
@@ -47,14 +29,14 @@
             <!-- product name  -->
             <!-- ///////////// -->
             <div class="horizental-slide__content--bold col">
-              {{ product.name }}
+              {{ vendor.name }}
             </div>
             <div class="horizental-slide__content--hint col text-left">
               <!-- ////////////////////////////////////////// -->
               <!--The distance between you & product as /kms  -->
               <!-- ////////////////////////////////////////// -->
               <q-icon name="img:icon/location.png" />
-              {{ product.location }} kms
+              {{ vendor.location }} kms
             </div>
             <!-- ///// -->
             <!-- row 2 -->
@@ -67,7 +49,7 @@
             <q-badge
               transparent
               class="q-mx-sm"
-              :label="product.type"
+              :label="vendor.type"
               style="background-color: rgba(255, 107, 97, 0.1); color: #ff6b61"
             />
             <!-- /////////// -->
@@ -75,7 +57,7 @@
             <!-- /////////// -->
             <q-badge
               style="color: rgba(5, 181, 22, 0.5); background: transparent"
-              :label="product.type ? 'مفتوح' : 'مغلق'"
+              :label="vendor.type ? 'مفتوح' : 'مغلق'"
             />
           </div>
           <!-- ///// -->
@@ -88,14 +70,14 @@
               <!-- delevry_time -->
               <!-- //////////// -->
               <div class="horizental-slide__content--hint q-mx-xs">
-                {{ product.delevry_time }}
+                {{ vendor.delevry_time }}
               </div>
               <q-icon class="q-my-auto" name="img:icon/car-ship.png" />
               <!-- ///// -->
               <!-- price -->
               <!-- ///// -->
               <div class="horizental-slide__content--hint q-mx-xs">
-                {{ product.price }} ر.س
+                {{ vendor.price }} ر.س
               </div>
             </div>
             <!-- ///// -->
@@ -110,38 +92,26 @@
     </q-card>
   </div>
 </template>
-
 <script>
 export default {
   props: {
-    vindors: {
-      type: Array,
-    },
-    //  if i want slide horzintal
-    horzental: {
-      type: Boolean,
-      default: false,
+    vendor: {
+      type: Object,
+      required: true,
     },
   },
+  // props: ["product"],
 };
 </script>
 
 <style lang="scss" scoped>
 .horizental-slide {
-  // padding: 0 1rem 1.3rem;
   display: flex;
-  overflow-x: scroll;
-  scroll-padding: 100%;
-  scroll-snap-type: x mandatory;
   &__items {
-    flex: 0 0 300px;
+    flex: 0 0 100%;
     position: relative;
-    display: inline-block;
-    scroll-snap-align: start;
-    height: 90px;
-    width: 300px;
-    margin-right: 10px;
-    padding: 0;
+    height: 100px;
+    // padding: 10px;
     border-radius: 8px;
     img {
       height: 100%;

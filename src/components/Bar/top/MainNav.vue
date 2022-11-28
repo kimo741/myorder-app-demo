@@ -3,6 +3,13 @@
     <div class="row justify-around q-pt-md">
       <div class="col-3">
         <div class="row justify-center">
+          <q-btn
+            v-show="backIcon"
+            class="col-5"
+            icon="eva-arrow-ios-forward-outline"
+            @click="this.$router.go(-1)"
+            flat
+          />
           <!-- ///////////////// -->
           <!-- notficaton button -->
           <!-- ///////////////// -->
@@ -95,6 +102,11 @@ export default {
     notfiIcon: {
       type: Boolean,
       default: true,
+    },
+    // back icon
+    backIcon: {
+      type: Boolean,
+      default: false,
     },
     // toggle message icon
     messageIcon: {

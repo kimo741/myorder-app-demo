@@ -289,12 +289,12 @@ export default {
   scroll-padding: 100%;
   scroll-snap-type: x mandatory;
   &__items {
-    flex: 0 0 70px;
+    flex: 0 0 60px;
     position: relative;
     // scroll-snap-align: center;
     display: inline-block;
-    height: 65px;
-    width: 65px;
+    height: 60px;
+    width: 60px;
     font-size: 0;
     margin-right: 10px;
     img {

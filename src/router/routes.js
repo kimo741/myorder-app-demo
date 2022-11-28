@@ -3,9 +3,18 @@
 //////////////////////////////////////////
 import { wlecomePage , wilcomeSlider , login , verification ,ForgetPassword, creatNewPassword , RejesterAccount  } from "./container-pages/welcomAndLogin"
 //////////////////////////////////////////
+///////////////// layouts ////////////////
 //////////////////////////////////////////
-//////////////////////////////////////////
+import ProfileLayout from "src/layouts/childes/ProfileLayout.vue"
+import HomeLayout from "src/layouts/childes/HomeLayout.vue"
+import ShopsLayout from "src/layouts/childes/ShopsLayout.vue"
+import FavoritsLayout from "src/layouts/childes/FavoritsLayout.vue"
+///////////////////////////////////////////
+///////////////// childes /////////////////
+///////////////////////////////////////////
 import ShopsPage from 'src/pages/ShopsPage.vue'
+import vendorPage from 'src/components/shops/VendorPage.vue'
+import FavoitsPage from 'src/pages/FavoritsPage.vue'
 import Search from 'src/pages/serchPage/MainSearch.vue'
 
 const routes = [
@@ -62,26 +71,70 @@ const routes = [
     ////////////////
     // home page///
     //////////////
-      { path: '',
-      component: () => import('pages/HomePage.vue'),
+    {
+      path: '',
+      component: HomeLayout,
       meta: { firstView: true },
+      children:[
+          {
+          path: '',
+          component: () => import('pages/HomePage.vue'),
+          },
+          {
+            path: 'search',
+            component: Search,
+            name:"search"
+          }
+      ]
       },
+
      ///////////////
     // shops page//
    ///////////////
-      { path: 'shops',
-      component: ShopsPage,
+      {
+      path: 'shops',
+      component: ShopsLayout,
       meta: { firstView: true },
-      name:"shops"
+      children:[
+          {
+          path: '',
+          component: ShopsPage,
+          name:"shops"
+          },
+          {
+          path: 'vendor-page:id',
+          component: vendorPage,
+          name:"vendorPage",
+          props:true,
+          },
+      ]
       },
-     ///////////////
-    // shops page//
-   ///////////////
-      { path: 'search',
-      component: Search,
+     ////////////////
+    // shops page //
+   ////////////////
+      {
+      path: 'favorite',
+      component: FavoritsLayout,
       meta: { firstView: true },
-      name:"search"
-      }
+      children:[
+        {
+          path: '',
+          component: FavoitsPage,
+
+        }
+
+      ]
+      },
+     //////////////////
+    // profile page //
+   //////////////////
+      {
+      path: 'profile',
+      component: ProfileLayout,
+      meta: { firstView: true },
+      children:[
+      ]
+      },
     ]
   },
 

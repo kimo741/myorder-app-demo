@@ -1,5 +1,5 @@
 <template>
-  <q-page>
+  <q-page dir="rtl">
     <!-- //////////////// -->
     <!-- header component -->
     <!-- //////////////// -->
@@ -101,12 +101,12 @@
 import { ref } from "vue";
 import MainNav from "../components/Bar/top/MainNav.vue";
 import TopBarStotys from "src/components/Stotys/TopBarStotys.vue";
-import PostView from "src/components/UI/PostView.vue";
+import PostView from "src/components/home/PostView.vue";
 import SharePost from "../components/dialogs/SharePost.vue";
 import TitleBar from "src/components/UI/TitleBar.vue";
 import OffersCarousel from "src/components/carousels/OffersCarousel.vue";
-import SlideItemH from "src/components/UI/sliders/SlideItemH.vue";
-import SliderItemV from "src/components/UI/sliders/SliderItemV.vue";
+import SlideItemH from "src/components/home/SlideItemH.vue";
+import SliderItemV from "src/components/home/SliderItemV.vue";
 
 export default {
   name: "IndexPage",
