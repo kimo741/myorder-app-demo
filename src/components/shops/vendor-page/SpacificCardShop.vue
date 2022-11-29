@@ -31,13 +31,13 @@
             <div class="horizental-slide__content--bold col">
               {{ vendor.name }}
             </div>
-            <div class="horizental-slide__content--hint col text-left">
-              <!-- ////////////////////////////////////////// -->
-              <!--The distance between you & product as /kms  -->
-              <!-- ////////////////////////////////////////// -->
-              <q-icon name="img:icon/location.png" />
-              {{ vendor.location }} kms
-            </div>
+            <q-icon
+              size="sm"
+              name="eva-more-horizontal-outline"
+              class="horizental-slide__show-more"
+              @click="$emit('emitEventShareVendor', vendor)"
+            />
+
             <!-- ///// -->
             <!-- row 2 -->
             <!-- ///// -->
@@ -59,6 +59,23 @@
               style="color: rgba(5, 181, 22, 0.5); background: transparent"
               :label="vendor.type ? 'مفتوح' : 'مغلق'"
             />
+            <q-badge
+              v-if="vendor.offer"
+              transparent
+              class="q-mx-sm"
+              align="left"
+              :label="'خصم' + vendor.offer"
+              style="background-color: rgba(255, 107, 97, 0.1); color: #ff6b61"
+            >
+              <q-icon name="img:icon/label-offer.png" />
+            </q-badge>
+            <div class="horizental-slide__content--hint col text-left">
+              <!-- ////////////////////////////////////////// -->
+              <!--The distance between you & product as /kms  -->
+              <!-- ////////////////////////////////////////// -->
+              <q-icon name="img:icon/location.png" />
+              {{ vendor.location }} kms
+            </div>
           </div>
           <!-- ///// -->
           <!-- row 3 -->
@@ -147,6 +164,11 @@ export default {
     }
     &--ratting {
     }
+  }
+  &__show-more {
+    position: absolute;
+    left: 5px;
+    top: 0px;
   }
 }
 .vertical_slide {

@@ -77,6 +77,19 @@
               style="color: rgba(5, 181, 22, 0.5); background: transparent"
               :label="product.type ? 'مفتوح' : 'مغلق'"
             />
+            <!-- ////// -->
+            <!--  offer -->
+            <!-- ////// -->
+            <q-badge
+              v-if="product.offer"
+              transparent
+              class="q-mx-sm"
+              align="left"
+              :label="'خصم' + product.offer"
+              style="background-color: rgba(255, 107, 97, 0.1); color: #ff6b61"
+            >
+              <q-icon name="img:icon/label-offer.png" />
+            </q-badge>
           </div>
           <!-- ///// -->
           <!-- row 3 -->

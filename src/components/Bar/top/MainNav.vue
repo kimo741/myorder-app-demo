@@ -54,9 +54,14 @@
       <!-- ///////////////// -->
       <!------ cover img ------>
       <!-- ///////////////// -->
-      <div class="col-6 justify-center text-center">
-        <q-img class="q-mx-auto" width="120px" src="logo.png" />
+      <div
+        @click="this.$router.push('/')"
+        v-if="title === null"
+        class="col-6 main-nav__logo"
+      >
+        <img src="logo.png" />
       </div>
+      <div v-else class="text-h1 text-500 q-ma-auto">{{ title }}</div>
       <!-- ///////////////// -->
       <!------ ///////// ------>
       <!-- ///////////////// -->
@@ -80,6 +85,14 @@
           icon="img:icon\Search.png"
           flat
           @click="openSearchPage"
+          to="/search"
+        />
+        <q-btn
+          v-show="cartIcon"
+          class="col-5"
+          icon="img:icon\cart.png"
+          flat
+          @click="chechmyCart"
           to="/search"
         />
       </div>
@@ -123,6 +136,15 @@ export default {
       type: Boolean,
       default: true,
     },
+    // toggle search icon
+    title: {
+      type: String,
+      default: null,
+    },
+    cartIcon: {
+      type: Boolean,
+      default: false,
+    },
   },
   methods: {
     openNotficatonPage() {
@@ -137,23 +159,37 @@ export default {
     openInboxMessages() {
       //
     },
+    chechmyCart() {
+      //
+    },
   },
 };
 </script>
 
 <style lang="scss" scoped>
+.main-nav {
+  width: 100%;
+  height: 60px;
+  &__logo {
+    max-width: 100%;
+    max-height: 100%;
+    margin: auto;
+    text-align: center;
+    zoom: 40%;
+    img {
+    }
+  }
+}
 .edit-badge {
   position: absolute;
-  right: 3px;
-  top: 3px;
   padding: 0 !important;
   width: 10px;
-  height: 10px;
+  height: 10px !important;
   &__notify {
-    right: 50%;
-    top: 3px;
+    max-height: 1px !important;
+    right: 18px;
+    top: 0px;
     transform: translateX(-50%);
   }
 }
 </style>
-
