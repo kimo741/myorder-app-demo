@@ -92,7 +92,12 @@ import OffersCarousel from "src/components/carousels/OffersCarousel.vue";
 import TitleBar from "src/components/UI/TitleBar.vue";
 import DinamicSliderVindors from "src/components/shops/DinamicSliderVindors.vue";
 export default {
-  components: { MainNav, OffersCarousel, TitleBar, DinamicSliderVindors },
+  components: {
+    MainNav,
+    OffersCarousel,
+    TitleBar,
+    DinamicSliderVindors,
+  },
   setup() {
     return {
       tab: ref("list"),

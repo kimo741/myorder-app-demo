@@ -10,6 +10,15 @@
             @click="this.$router.go(-1)"
             flat
           />
+          <q-btn
+            v-show="filterIcon"
+            class="col-5"
+            size="md"
+            icon="eva-funnel-outline"
+            color="grey-8"
+            @click="this.$emit('emitFiler')"
+            flat
+          />
           <!-- ///////////////// -->
           <!-- notficaton button -->
           <!-- ///////////////// -->
@@ -104,6 +113,10 @@
 export default {
   props: {
     messageBdge: {
+      type: Boolean,
+      default: false,
+    },
+    filterIcon: {
       type: Boolean,
       default: false,
     },

@@ -1,6 +1,11 @@
 <template>
   <div class="vertical-list" dir="rtl">
-    <q-card @click="$emit('getDetailsForProduct',product)" class="my-card q-px-xs" v-for="(product, i) in products" :key="i">
+    <q-card
+      @click="$emit('getDetailsForProduct', product)"
+      class="my-card q-px-xs"
+      v-for="(product, i) in products"
+      :key="i"
+    >
       <q-card-section class="q-pa-sm">
         <div class="handel-cutting-img">
           <img :src="product.img" alt="" />
@@ -41,6 +46,7 @@ export default {
   img {
     position: absolute;
     left: 50%;
+    border-radius: 10px;
     top: 50%;
     transform: translate(-50%, -50%);
     margin: auto;

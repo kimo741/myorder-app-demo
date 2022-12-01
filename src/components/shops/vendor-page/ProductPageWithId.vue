@@ -1,5 +1,9 @@
 <template>
-  <q-card class="main-rounded single-product full-width full-height" dir="rtl">
+  <!-- if user share a product to a friend with by url -->
+  <!-- this page for handel open product with url -->
+  <!-- here i well get id for product from id route -->
+  <!-- when mounted this component will send requist grphQl to get details about product by id -->
+  <q-page class="main-rounded single-product full-width full-height" dir="rtl">
     <!-- ///////////// -->
     <!-- product image -->
     <!-- ///////////// -->
@@ -120,7 +124,7 @@
           <Transition name="slide-up">
             <q-icon
               class="q-ma-auto"
-              v-if="my_cart"
+              v-if="in_mycart"
               color="primary"
               size="sm"
               name="done_all"
@@ -156,21 +160,31 @@
         </div>
       </div>
     </div>
-  </q-card>
+  </q-page>
 </template>
 
 <script>
 import { ref } from "vue";
 
 export default {
-  props: ["singleProduct"],
+  // props: ["singleProduct"],
   setup() {
     return {
-      my_cart: ref(false),
+      // my opject for my product
+      singleProduct: ref({}),
+      // product id
+      product_id: ref(""),
+      // check if product in my card or not
+      in_mycart: ref(false),
+      //  radio  side item
       side_items: ref("1"),
+      // count for product will orderd
       count: ref("1"),
+      // sellect adds with order
       add_more: ref([]),
+      // check if like it or not
       like_it: ref(false),
+      // choises for side items
       side_item_list: ref([
         {
           label: "الاختيار الأول",
@@ -185,6 +199,7 @@ export default {
           val: "3",
         },
       ]),
+      // choises for adds
       add_more_list: ref([
         {
           label: "اضافه",
@@ -202,31 +217,38 @@ export default {
     };
   },
   methods: {
+    // event on click add like
     toggleLike() {
       this.like_it = !this.like_it;
     },
+    // event handel sellect side item
     sellectItem(item) {
       this.side_items = item.val;
     },
-    // markItem(item) {
-    //   const index = this.add_more.indexOf(item);
-    //   index == -1 ? this.add_more.push(item) : this.add_more.splice(item, 1);
-    //   console.log(this.add_more);
-    // },
+    // increase Order
     increaseOrder() {
       this.count++;
     },
+    // decrease Order
     decreaseOrder() {
       if (this.count > 1) {
         this.count--;
       }
     },
+    // event add to cart
     addToCart() {
-      this.my_cart = !this.my_cart;
+      this.in_mycart = !this.in_mycart;
     },
+    // event share product
     sharPost() {
       this.$emit("passProductForShareId", this.singleProduct);
     },
+    // get data with graphQL by id on mounted component
+    getDataById() {},
+  },
+  mounted() {
+    this.product_id = this.$route.params.pid;
+    // this.getDataById()
   },
 };
 </script>

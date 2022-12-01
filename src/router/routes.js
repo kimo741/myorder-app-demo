@@ -16,6 +16,7 @@ import ShopsPage from 'src/pages/ShopsPage.vue'
 import vendorPage from 'src/components/shops/VendorPage.vue'
 import FavoitsPage from 'src/pages/FavoritsPage.vue'
 import Search from 'src/pages/serchPage/MainSearch.vue'
+import ProductPageUrl from "src/components/shops/vendor-page/ProductPageWithId.vue"
 
 const routes = [
   {
@@ -105,6 +106,12 @@ const routes = [
           path: 'vendor-page:id',
           component: vendorPage,
           name:"vendorPage",
+          props:true,
+          },
+          {
+          path: 'product:pid',
+          component: ProductPageUrl,
+          name:"singleProduct",
           props:true,
           },
       ]

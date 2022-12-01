@@ -1,6 +1,5 @@
 <template>
   <q-card class="share-dailog q-py-lg" dir="rtl">
-    <!-- <div class="share-dailog q-py-lg" dir="rtl"> -->
     <q-list class="q-py-md" dense>
       <q-item>
         <q-item-section avatar>
@@ -97,7 +96,7 @@
                   id="testing-code"
                   class="col-10 text-right handel_overflow text-hint"
                 >
-                  `my-order://post/{{ postdata.id }}
+                  my-order://{{ supDomain }}/{{ postdata.id }}
                 </div>
                 <div class="col-2 text-center">
                   <q-icon name="img:icon/link-copy.png" />
@@ -122,7 +121,18 @@
 <script>
 import { copyToClipboard } from "quasar";
 export default {
-  props: ["postdata"],
+  // props: ["postdata"],
+  props: {
+    postdata: {
+      type: String || Number,
+      required: false,
+    },
+    supDomain: {
+      type: String,
+      default: "post",
+    },
+  },
+
   methods: {
     facebookShare() {},
     twitterShare() {},
