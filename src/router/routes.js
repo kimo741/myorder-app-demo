@@ -17,6 +17,7 @@ import vendorPage from 'src/components/shops/VendorPage.vue'
 import FavoitsPage from 'src/pages/FavoritsPage.vue'
 import Search from 'src/pages/serchPage/MainSearch.vue'
 import ProductPageUrl from "src/components/shops/vendor-page/ProductPageWithId.vue"
+import ProfilePage from "src/pages/ProfilePage.vue"
 
 const routes = [
   {
@@ -139,7 +140,10 @@ const routes = [
       path: 'profile',
       component: ProfileLayout,
       meta: { firstView: true },
-      children:[
+      children:[{
+        path :"",
+        component: ProfilePage,
+      }
       ]
       },
     ]
