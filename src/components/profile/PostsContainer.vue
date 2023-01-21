@@ -1,6 +1,6 @@
 <template>
   <div dir="rtl">
-    <div
+    <!-- <div
       class="
         full-width
         row
@@ -13,7 +13,7 @@
     >
       <div class="text-body2 q-mx-sm text-500">منشوراتي</div>
       <q-icon name="img:icon/Vector.png" />
-    </div>
+    </div> -->
     <div class="q-my-md flex">
       <div class="text-sm text-500">ماتم نشره مؤخرا</div>
       <span class="text-hint q-mx-sm">(25)</span>
