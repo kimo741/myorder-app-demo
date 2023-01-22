@@ -8,14 +8,20 @@
 </template>
 
 <script>
-import { ref } from "vue";
+import { ref, onMounted } from "vue";
 import AreaChart from "../Charts/AreaChart.vue";
 import LineChart from "../Charts/LineChart.vue";
 import DynamicHeader from "../UI/DynamicHeader.vue";
 import PostCard from "./PostCard.vue";
+import { useRoute } from "vue-router";
+
 export default {
   components: { DynamicHeader, PostCard, AreaChart, LineChart },
   setup() {
+    const route = useRoute();
+    onMounted(() => {
+      console.log(route.params);
+    });
     return {
       lineOpstions: ref({
         xaxis: {

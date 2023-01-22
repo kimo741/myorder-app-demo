@@ -18,6 +18,10 @@ import FavoitsPage from 'src/pages/FavoritsPage.vue'
 import Search from 'src/pages/serchPage/MainSearch.vue'
 import ProductPageUrl from "src/components/shops/vendor-page/ProductPageWithId.vue"
 import ProfilePage from "src/pages/ProfilePage.vue"
+import SpacificPost from 'src/components/profile/SpacificPost.vue'
+import setting from 'src/components/profile/VendorSeting.vue'
+
+
 
 const routes = [
   {
@@ -140,10 +144,22 @@ const routes = [
       path: 'profile',
       component: ProfileLayout,
       meta: { firstView: true },
-      children:[{
+      children:[
+        {
         path :"",
         component: ProfilePage,
-      }
+        },
+        {
+          path:"post:post",
+          component:SpacificPost,
+          props:true,
+          name:"spacificPost"
+        },
+        {
+          path:"setting",
+          component:setting,
+          name:"setting",
+        },
       ]
       },
     ]
