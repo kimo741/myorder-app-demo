@@ -43,6 +43,8 @@
             style="background: #eeeeee !important"
             name="bookmark"
           >
+            <PostsContainer />
+
             <!-- posts -->
           </q-tab-panel>
           <!-- //////////// -->
@@ -53,6 +55,9 @@
             style="background: #eeeeee !important"
             name="favorits"
           >
+            <FilterBar />
+            <PostsContainer />
+
             <!-- posts -->
           </q-tab-panel>
           <!-- ///////////// -->
@@ -63,11 +68,20 @@
             style="background: #eeeeee !important"
             name="myMnue"
           >
-            <PostsContainer />
+            <!-- ////////////// -->
+            <!-- shopping menue -->
+            <!-- ////////////// -->
+            <ShopingList
+              @mnueMoreOptions="menu_dialog = true"
+              @addToCartPassing="addToCart"
+            />
             <!-- tap -->
           </q-tab-panel>
         </q-tab-panels>
       </q-card>
+      <q-dialog full-width v-model="menu_dialog" position="bottom">
+        <dialog-filter-menu />
+      </q-dialog>
     </div>
   </q-page>
 </template>
@@ -79,18 +93,30 @@ import DynamicHeader from "src/components/UI/DynamicHeader.vue";
 import PostsContainer from "src/components/profile/PostsContainer.vue";
 import AreaChart from "src/components/Charts/AreaChart.vue";
 import { ref } from "vue";
+import FilterBar from "src/components/shops/vendor-page/FilterBar.vue";
+import ShopingList from "src/components/profile/shopingList.vue";
+import DialogFilterMenu from 'src/components/dialogs/dialogFilterMenu.vue';
 export default {
   setup() {
+    const addToCart = (product) => {
+      // get product to add it to cart
+    };
     return {
       tab: ref("myMnue"),
+      menu_dialog: ref(false),
+      addToCart,
     };
   },
   components: {
+
     DynamicHeader,
     ProfileInfo,
     HeighLightStory,
     PostsContainer,
     AreaChart,
+    FilterBar,
+    ShopingList,
+    DialogFilterMenu,
   },
 };
 </script>

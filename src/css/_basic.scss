@@ -192,6 +192,7 @@ small,
   justify-content: start;
   margin: 0 0 20px 20px;
 
+
   i {
     font-size: 1em;
   }
@@ -231,11 +232,6 @@ small,
     bottom: -40px;
   }
 
-}
-
-// edit input outline
-.edit-round .q-field__control {
-  border-radius: 18px !important;
 }
 
 /////////////////////////////////////////////
@@ -307,6 +303,7 @@ small,
       overflow: hidden;
       white-space: nowrap;
       text-overflow: ellipsis;
+
       font-weight: 500;
     }
 
@@ -354,7 +351,7 @@ input {
 
 .q-field__label {
   direction: rtl !important;
-  right: 0 !important;
+  right: 0;
   left: auto;
 }
 

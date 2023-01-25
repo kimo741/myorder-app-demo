@@ -1,5 +1,5 @@
 <template>
-  <div class="filter-bar horizental-list">
+  <div class="filter-bar horizental-list" dir="rtl">
     <div
       v-for="(item, i) in taps"
       :key="i"
@@ -17,26 +17,26 @@ import { ref } from "vue";
 export default {
   setup() {
     return {
-      tap_active: ref("الأكثر مبيعا"),
+      tap_active: ref("الكل"),
       taps: ref([
         {
-          label: "الأكثر مبيعا",
+          label: "الكل",
           value: "all",
         },
         {
-          label: "العروض",
+          label: "مطاعم",
           value: "fastfood",
         },
         {
-          label: "الأصناف الجانبية",
+          label: "مقاهى",
           value: "snaks",
         },
         {
-          label: "المشروبات",
+          label: "هدايا",
           value: "sandwitch",
         },
         {
-          label: "اكلات سريعه",
+          label: "مشروبات",
           value: "deinks",
         },
       ]),
@@ -59,13 +59,13 @@ export default {
 
 <style lang="scss" scoped>
 .filter-bar {
-  background-color: $primary;
+  background-color: transparent;
   width: 100%;
   border-radius: 0;
   .my-card {
     transition: all 0.1s ease-in-out;
     position: relative;
-    color: rgba(255, 255, 255, 0.5);
+    color: rgba(65, 65, 65, 0.5);
     &::after {
       content: "";
       position: absolute;
@@ -78,14 +78,16 @@ export default {
       // background-color: rgba(0, 0, 0, 0.1);
     }
     &:active {
-      background-color: rgba(255, 255, 255, 0.5);
+      background-color: rgba(88, 88, 88, 0.5);
     }
   }
   .active {
-    color: #ffffff;
+    // background-color: rgba(88, 88, 88, 0.5);
+    font-weight: 800;
     position: relative;
+
     &::after {
-      background-color: #ffffff;
+      background-color: rgba(88, 88, 88, 0.5);
     }
   }
 }

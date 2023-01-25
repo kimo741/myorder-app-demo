@@ -3,7 +3,7 @@
     <!-- //////////////////////// -->
     <!-- top bar for back or skip -->
     <!-- //////////////////////// -->
-    <BackAndSkip @emitSkip="lastSlide" title="تخطي" />
+    <BackAndSkip @emitSkip="lastSlide" title="تخطي"  />
     <!-- //////// -->
     <!-- carousel -->
     <!-- //////// -->

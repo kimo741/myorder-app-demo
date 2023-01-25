@@ -1,157 +1,61 @@
 <template>
-  <div class="main-nav row justify-between items-center" dir="rtl">
-    <div class="col-3">
-      <div class="row text-right">
-        <!-- /////////// -->
-        <!-- back Button -->
-        <!-- /////////// -->
+  <div dir="rtl" class="bg-transparent">
+    <q-toolbar>
+      <q-toolbar-title>
+        <!-- ///////////////////////////////////////////////// -->
+        <!-- btn have a title and emmit function if have title -->
+        <!-- ///////////////////////////////////////////////// -->
         <q-btn
-          v-if="backIcon"
+          v-if="title"
+          class="text-500 text-body1 text-center disc-color"
+          :label="title"
+          @click="$emit('emitSkip')"
           flat
-          class="col"
-          size="md"
-          icon="eva-arrow-ios-forward-outline"
-          @click="this.$router.go(-1)"
         />
-        <!-- //////////////// -->
-        <!-- notfication icon -->
-        <!-- //////////////// -->
+        <!-- /////////////////////////////////////////////////////// -->
+        <!-- btn have a icon have a function to forward page history -->
+        <!-- /////////////////////////////////////////////////////// -->
         <q-btn
-          v-if="notifyIcon"
-          class="col text-right"
-          icon="img:icon\notfication.png"
-          align="left"
+          v-else
+          class="text-center"
+          color="black"
+          :icon="iconSrc"
+          @click="$router.go(-1)"
+          size="md"
           flat
-          @click="$router.push({ name: 'notify' })"
-        >
-          <!-- ///////////////////////////////////// -->
-          <!-- badge if have notficaton was,t see it -->
-          <!-- ///////////////////////////////////// -->
-          <q-badge
-            class="edit-badge edit-badge__notify"
-            v-show="nofiBdge"
-            align="top"
-            color="primary"
-            rounded
-            floating
-          />
-        </q-btn>
-        <!-- <q-btn
-          v-if="post"
-          dense
-          style="width: 110px; padding: 3px 40px"
-          class="main-rounded"
-          label="نشر"
-          color="primary"
-          @click="$emit('emitPost')"
-        /> -->
-      </div>
-    </div>
-    <!-- ////////// -->
-    <!-- logo image -->
-    <!-- ////////// -->
-    <div
-      @click="this.$router.push('/')"
-      v-if="title === null"
-      class="col-6 main-nav__logo"
-    >
-      <img src="logo.png" />
-    </div>
-    <div v-else class="text-h1 text-500 q-ma-auto">{{ title }}</div>
-    <div class="col-3 text-left">
-      <!-- ////////// -->
-      <!-- search icon -->
-      <!-- /////////// -->
-      <q-btn
-        v-if="searchIcon"
-        @click="$router.push({ name: 'search' })"
-        flat
-        size="md"
-        icon="img:/icon/Search.png"
-      />
-      <q-btn
-        v-if="addIcon"
-        @click="$emit('emitAdd')"
-        color="primary"
-        flat
-        size="md"
-        icon="add"
-      />
-      <q-btn
-        v-if="setingIcon"
-        @click="$emit('emitSetting')"
-        color="primary"
-        flat
-        size="md"
-        icon="img:icon/setting.png"
-      />
-    </div>
+        />
+      </q-toolbar-title>
+      <!-- </div> -->
+    </q-toolbar>
   </div>
 </template>
 
 <script>
 export default {
   props: {
-    backIcon: {
-      type: Boolean,
-      default: false,
-    },
-    notifyIcon: {
-      type: Boolean,
-      default: true,
-    },
-    setingIcon: {
-      type: Boolean,
-      default: false,
-    },
-    nofiBdge: {
-      type: Boolean,
-      default: false,
-    },
-    searchIcon: {
-      type: Boolean,
-      default: false,
-    },
-    post: {
-      type: Boolean,
-      default: false,
-    },
-    addIcon: {
-      type: Boolean,
-      default: false,
-    },
     title: {
       type: String,
-      default: null,
+      required: false,
+      default: false,
     },
+    iconSrc: {
+      type: String,
+      required: false,
+      default: false,
+    },
+  },
+  setup() {
+    return {};
   },
 };
 </script>
 
 <style lang="scss" scoped>
-.main-nav {
+.fixed-top-bar {
   width: 100%;
-  height: 60px;
-  &__logo {
-    max-width: 100%;
-    max-height: 100%;
-    margin: auto;
-    text-align: center;
-    zoom: 40%;
-    img {
-    }
-  }
-}
-.edit-badge {
-  position: absolute;
-  padding: 0 !important;
-  width: 10px;
-  height: 10px !important;
-  &__notify {
-    max-height: 1px !important;
-    right: 18px;
-    top: 0px;
-    transform: translateX(-50%);
-  }
+  height: 40px;
+  position: fixed;
+  top: 0;
+  left: 0;
 }
 </style>

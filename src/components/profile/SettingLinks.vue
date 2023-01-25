@@ -59,17 +59,27 @@ export default {
           to: "edit-info",
         },
         {
-          label: "المتجر",
+          label: "المشتريات",
           icon: "img:icon/shop.png",
           // to: "",
         },
         {
-          label: "الأكواد",
+          label: "الأبلاغ عن نواقص",
           icon: "img:icon/ticket-discount.png",
           to: "sale-code",
         },
         {
-          label: "المدفوعات والمحفظه",
+          label: "الرصيد",
+          icon: "img:icon/box.png",
+          to: "Payments&Wallet",
+        },
+        {
+          label: "الأهدائات",
+          icon: "img:icon/box.png",
+          to: "Payments&Wallet",
+        },
+        {
+          label: "التسويق بالعمولة",
           icon: "img:icon/box.png",
           to: "Payments&Wallet",
         },
