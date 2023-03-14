@@ -207,7 +207,7 @@ export default {
 };
 </script>
 
-<style lang="scss" scoped>
+<style lang="scss">
 .bg-taps {
   background: rgba(118, 118, 128, 0.12);
   border-radius: 8px !important;

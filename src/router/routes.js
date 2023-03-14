@@ -25,6 +25,12 @@ import EditUserInfo from 'src/components/profile/setting/Personal/EditUserInfo.v
 import EditPhoneNumber from 'src/components/profile/setting/Personal/EditPhoneNumber.vue'
 import ChangeEmail from 'src/components/profile/setting/Personal/ChangeEmail.vue'
 import EditAdress from 'src/components/profile/setting/Personal/EditAdress.vue'
+import Purchase from 'src/components/profile/setting/purchase'
+import ReportsShortfalls from 'src/components/profile/setting/ReportsShortfalls'
+import walet from 'src/components/profile/setting/walet'
+import MarketByCommetion from 'src/components/profile/setting/MarketByCommission'
+import dedications from 'src/components/profile/setting/dedications'
+
 
 
 
@@ -194,6 +200,31 @@ const routes = [
           path:"change-adress",
           component:EditAdress,
           name:"EditAdress"
+        },
+        {
+          path:"purchase",
+          component:Purchase,
+          name:"purchase"
+        },
+        {
+          path:"reports-shortfalls",
+          component:ReportsShortfalls,
+          name:"reports-shortfalls"
+        },
+        {
+          path:"walet",
+          component:walet,
+          name:"walet"
+        },
+        {
+          path:"market-Commetion",
+          component:MarketByCommetion,
+          name:"market-Commetion"
+        },
+        {
+          path:"dedications",
+          component:dedications,
+          name:"dedications"
         },
       ]
       },

@@ -61,33 +61,33 @@ export default {
         {
           label: "المشتريات",
           icon: "img:icon/shop.png",
-          // to: "",
+          to: "purchase",
         },
         {
           label: "الأبلاغ عن نواقص",
           icon: "img:icon/ticket-discount.png",
-          to: "sale-code",
+          to: "reports-shortfalls",
         },
         {
           label: "الرصيد",
           icon: "img:icon/box.png",
-          to: "Payments&Wallet",
+          to: "walet",
         },
         {
           label: "الأهدائات",
           icon: "img:icon/box.png",
-          to: "Payments&Wallet",
+          to: "dedications",
         },
         {
           label: "التسويق بالعمولة",
           icon: "img:icon/box.png",
-          to: "Payments&Wallet",
+          to: "market-Commetion",
         },
-        {
-          label: "اللغة",
-          icon: "img:icon/global.png",
-          // to: "",
-        },
+        // {
+        //   label: "اللغة",
+        //   icon: "img:icon/global.png",
+        //   // to: "",
+        // },
         {
           label: "اتصل بنا",
           icon: "img:icon/call.png",
