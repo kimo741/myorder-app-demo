@@ -1,5 +1,4 @@
-# My order (my-order)
-
+# My order (my-order) mobile app by by quasar to deploying web applications to mobile app.
 A Quasar Project
 
 ## Install the dependencies
